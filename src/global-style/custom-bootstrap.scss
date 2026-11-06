@@ -1,0 +1,67 @@
+@import 'variables';
+@import 'theme';
+@import 'typography';
+
+// Customized Variables
+$primary: map-get($colors, primary);
+$body-color: map-get($colors, darkgray);
+$form-label-font-size: map-get($font-sizes, base);
+$form-label-color: var(--form-label-color);
+$box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+$box-shadow-sm: 0 0 0.25rem rgba(0, 0, 0, 0.15);
+$box-shadow-lg: 0 0 3rem rgba(0, 0, 0, 0.175);
+$font-family-base: 'Inter', sans-serif;
+
+// Customized Utilities
+$utilities: (
+  "z-index": (
+    property: z-index,
+    class: z,
+    values: (
+      n1: -1,
+      0: 0,
+      1: 1,
+      2: 2,
+      3: 3,
+      10: 10,
+      50: 50,
+      100: 100,
+      150: 150
+    )
+  )
+);
+
+@import "bootstrap/scss/bootstrap";
+
+@each $name, $color in $colors {
+  .btn-#{$name} {
+      background: var(--#{$name});
+      border: 1px solid var(--#{$name});
+      font-size: map-get($font-sizes, base);
+      padding: map-get($spacings, 2);
+      &:focus {
+        outline: 0;
+        box-shadow: none;
+      }
+      &:hover {
+        background-color: var(--#{$name}-hover);
+        border-color: var(--#{$name}-hover);
+      }
+      &:active:focus {
+        box-shadow: none;
+        background-color: var(--#{$name}-hover);
+        border-color: var(--#{$name}-hover);
+      }
+  }
+}
+
+.btn-white {
+  color: var(--menu-label);
+  &:hover {
+      background: var(--btn-white-hover);
+  }
+}
+
+.bg-primary {
+  background: var(--primary) !important;
+}

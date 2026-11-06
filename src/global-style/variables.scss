@@ -1,0 +1,72 @@
+$colors: (
+  primary: #2F2F73,
+  primary10:rgba(47, 47, 110, 0.1),
+  darkgray: #31314D,
+  gray: #59596C,
+  lightgray: #A8A8AD,
+  strokegray: #DADADA,
+  secondary: #6c757d,
+  success: #25B480,
+  danger: #FE6C6C,
+  warning: #FFB54D,
+  white: #ffffff,
+  strokegray40: rgba(218, 218, 218, 0.4),
+  dk-bg: #0E0E21,
+  dk-surface: #13132E,
+  dk-text: #C6C6EA,
+  dk-primary: #49499A,
+  dk-stroke:#26264C,
+  dk-strokegray40: rgba(38, 38, 76, 0.4)
+);
+
+$spacings: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem
+);
+
+$font-sizes: (
+  xxs: 0.688rem,
+  xs: 0.75rem,
+  sm: 0.813rem,
+  base: 0.875rem,
+  lead: 1rem,
+  fs15: 0.938rem,
+  h5: 1.125rem,
+  h4: 1.25rem,
+  h3: 1.375rem,
+  h2: 1.5rem,
+  h1: 1.75rem
+);
+
+$font-weights: (
+  regular: 400,
+  medium: 500,
+  semibold: 600
+);
+
+$dimensions: (
+  0: 0,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto,
+  80px: 80px,
+  100vh: 100vh,
+  50px: 50px
+);
+
+$dimensions-rem: (
+  0: 0rem,
+  10: 10rem
+);
+
+$radius: (
+  0:0,
+  base: 0.25rem,
+  lg: 0.375rem
+)

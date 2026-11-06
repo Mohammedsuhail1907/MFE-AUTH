@@ -1,0 +1,243 @@
+@import '../../../global-style/variables';
+
+.navbar-brand {
+    width: 180px;
+    position: fixed; // Default for desktop
+
+    @media only screen and (max-width: 1024px) {
+        width: 150px;
+        position: static !important;
+        display: block;
+        margin: 0 auto 20px auto; // Center and add space below
+        padding: 10px 0 0 15px;
+    }
+}
+
+.auth-wrap {
+    min-height: map-get($dimensions, 100vh);
+    padding-bottom: 120px;
+    position: relative; // Ensure stacking context
+
+    .auth-container {
+        min-height: calc(100vh - 120px);
+        padding-top: 30px;
+        z-index: 10; // Ensure card is above background
+
+        .card {
+            position: relative;
+            width: 435px;
+            box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.1) !important;
+            // ... existing styles ...
+
+            .client-logo {
+                width: 160px;
+                height: 51px;
+            }
+
+            .help-link {
+                position: absolute;
+                right: 0;
+                bottom: -25px;
+
+                svg {
+                    width: 18px;
+                    fill: map-get($colors, primary);
+                }
+            }
+
+            .tick-ico {
+                width: 20px;
+
+                path {
+                    fill: map-get($colors, lightgray);
+                }
+
+                &.active {
+                    path {
+                        fill: map-get($colors, success);
+                    }
+                }
+            }
+
+            // Base font size for all form elements
+            font-size: map-get($font-sizes, xs); // 12px
+
+            // Custom Form Styles
+            .form-label {
+                font-family: 'DM Sans', sans-serif;
+                font-weight: map-get($font-weights, medium);
+                font-style: normal;
+                font-size: map-get($font-sizes, xs); // 12px
+                line-height: 100%;
+                letter-spacing: 0;
+                vertical-align: middle;
+                color: map-get($colors, darkgray);
+            }
+
+            ::ng-deep {
+                .p-inputtext {
+                    width: 100%;
+                    font-size: map-get($font-sizes, xs); // 12px
+                    opacity: 1;
+                    border-radius: map-get($radius, base);
+                    border: 1px solid #ECECEC;
+                    padding: 8px 10px;
+                    background: map-get($colors, white);
+
+                    &:enabled:focus {
+                        border-color: map-get($colors, primary);
+                        box-shadow: none;
+                    }
+
+                    &::placeholder {
+                        font-size: map-get($font-sizes, xs); // 12px
+                        color: map-get($colors, lightgray);
+                    }
+
+                    &.ng-invalid.ng-dirty {
+                        border-color: map-get($colors, danger);
+                    }
+                }
+            }
+
+            // Error message styling
+            small.text-danger {
+                font-family: 'DM Sans', sans-serif;
+                font-size: map-get($font-sizes, xxs); // 11px — slightly smaller than field text
+                font-weight: map-get($font-weights, medium);
+                color: map-get($colors, danger) !important;
+            }
+
+
+
+            .btn-primary {
+                font-size: map-get($font-sizes, xs); // 12px
+                font-weight: map-get($font-weights, medium);
+                letter-spacing: 0.02em;
+                padding: 8px 16px;
+                background-color: #130F40;
+                border-color: #130F40;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: lighten(#130F40, 5%);
+                    border-color: lighten(#130F40, 5%);
+                }
+
+                &:disabled {
+                    background-color: lighten(#130F40, 20%);
+                    border-color: lighten(#130F40, 20%);
+                    cursor: not-allowed;
+                    opacity: 0.7;
+                }
+            }
+
+            // Server-side error banner — replaces the login button
+            .server-error-banner {
+                font-family: 'DM Sans', sans-serif;
+                font-size: map-get($font-sizes, xs); // 12px
+                font-weight: map-get($font-weights, medium);
+                color: #7a1e1e;
+                background-color: #fff4f4;
+                border: 1px solid #f5c6cb;
+                border-radius: map-get($radius, base);
+                line-height: 1.5;
+
+                i.pi-shield {
+                    font-size: 13px;
+                    color: #c0392b;
+                }
+            }
+        }
+    }
+
+    // Mobile Styles (up to 767px)
+    @media only screen and (max-width: 767px) {
+        min-height: map-get($dimensions, 100vh);
+        padding-bottom: 0;
+
+        .auth-container {
+            min-height: auto; // Let it grow
+            padding-top: 20px;
+            padding-bottom: 140px; // clear footer
+            align-items: flex-start;
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+                box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.1) !important;
+                background: map-get($colors, white);
+
+                .help-link {
+                    position: static;
+                    text-align: center !important;
+                    margin-top: 15px;
+                    width: 100%;
+                }
+
+                .store-badges {
+                    img {
+                        height: 32px; // Reduced size for mobile
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    // Tablet Styles (768px to 1024px)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        padding-bottom: 0; // Remove global padding-bottom, handle in container
+
+        .auth-container {
+            min-height: auto; // Allow flow
+            padding-top: 20px;
+            padding-bottom: 150px; // Space for footer
+            justify-content: center;
+            align-items: flex-start; // Start from top (below static logo)
+
+            .card {
+                width: 400px;
+                box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.1) !important;
+
+                .help-link {
+                    position: static; // Keep in flow on tablet too
+                    text-align: center !important;
+                    margin-top: 20px;
+                    width: 100%;
+                }
+
+                .store-badges {
+                    img {
+                        height: 36px; // Slightly larger for tablet but smaller than desktop
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .auth-btm-wrap {
+        height: 290px;
+        z-index: 1; // Lower than card
+
+        @media only screen and (max-width: 1024px) {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 0;
+            height: 140px;
+            background-size: cover;
+            background-position: center bottom;
+        }
+    }
+}
+
+.custom-spinner ::ng-deep .p-progress-spinner-svg {
+    width: 100% !important;
+    height: 100% !important;
+    viewBox: 0 0 20 20 !important;
+}

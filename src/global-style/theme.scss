@@ -1,0 +1,49 @@
+@import 'variables';
+
+@mixin theme-vars($theme-map) {
+    @each $key, $value in $theme-map {
+      --#{$key}: #{$value};
+    }
+}
+
+$light-theme: (
+    background: map-get($colors, white),
+    text: map-get($colors, gray),
+    primary: map-get($colors, primary),
+    primary-hover: darken(map-get($colors, primary), 5%),
+    surface: map-get($colors, white),
+    menu-label: map-get($colors, darkgray),
+    menu-label-hover: lighten(map-get($colors, primary), 60%),
+    form-label-color: map-get($colors, darkgray),
+    header-dd-bg: map-get($colors, strokegray40),
+    stroke:map-get($colors, strokegray),
+    header-stroke: map-get($colors, strokegray40),
+    btn-white-hover: map-get($colors, primary10),
+    overlaypanel-top-stroke: map-get($colors, strokegray40)
+);
+
+$dark-theme: (
+    background: map-get($colors, dk-bg),
+    text: map-get($colors, white),
+    primary: map-get($colors, dk-primary),
+    primary-hover: darken(map-get($colors, dk-primary), 10%),
+    surface: map-get($colors, dk-surface),
+    menu-label: map-get($colors, dk-text),
+    menu-label-hover: map-get($colors, dk-primary),
+    form-label-color: map-get($colors, dk-text),
+    header-dd-bg: map-get($colors, dk-primary),
+    stroke:map-get($colors, dk-stroke),
+    header-stroke: map-get($colors, dk-strokegray40),
+    btn-white-hover: map-get($colors, dk-primary),
+    overlaypanel-top-stroke: map-get($colors, dk-surface)
+);
+
+:root {
+@include theme-vars($light-theme);
+--bs-border-color: var(--stroke);
+}
+
+.dark-theme {
+@include theme-vars($dark-theme);
+--bs-border-color: var(--stroke);
+}

@@ -1,0 +1,47 @@
+/**
+ * Styles for the single-spa boot loader splash screen.
+ * Imported in main.scss (outside @layer so it loads globally).
+ */
+
+.hf-boot-wrap {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    z-index: 9999;
+}
+
+.hf-boot-spinner {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // CSS-only Spinner Ring
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 2px solid #e2e8f0; // Light background ring
+        border-top-color: #2F2F73; // Brand dark blue
+        animation: hf-spin 0.8s linear infinite;
+    }
+
+    .hf-boot-logo {
+        width: 70px; // Smaller logo to fit inside
+        height: auto;
+        opacity: 0.9;
+        // removed z-index as it is inside
+    }
+}
+
+@keyframes hf-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

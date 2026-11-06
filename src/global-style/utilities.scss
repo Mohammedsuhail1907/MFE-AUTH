@@ -1,0 +1,44 @@
+@import 'variables';
+
+@each $key, $value in $spacings {
+  .p-#{$key} { padding: $value !important; }
+  .pt-#{$key} { padding-top: $value !important; }
+  .pr-#{$key} { padding-right: $value !important; }
+  .pb-#{$key} { padding-bottom: $value !important; }
+  .pl-#{$key} { padding-left: $value !important; }
+  .px-#{$key} { padding-left: $value !important; padding-right: $value !important; }
+  .py-#{$key} { padding-top: $value !important; padding-bottom: $value !important; }
+
+  .m-#{$key} { margin: $value !important; }
+  .mt-#{$key} { margin-top: $value !important; }
+  .mr-#{$key} { margin-right: $value !important; }
+  .mb-#{$key} { margin-bottom: $value !important; }
+  .ml-#{$key} { margin-left: $value !important; }
+  .mx-#{$key} { margin-left: $value !important; margin-right: $value !important; }
+  .my-#{$key} { margin-top: $value !important; margin-bottom: $value !important; }
+}
+
+@each $key, $value in $dimensions {
+  .w-#{$key} { width: $value !important; }
+  .h-#{$key} { height: $value !important; }
+}
+
+@each $key, $value in $dimensions {
+  .max-w-#{$key} { width: $value !important; }
+  .max-h-#{$key} { height: $value !important; }
+}
+
+@each $key, $value in $dimensions-rem {
+  .max-w-#{$key} { width: $value !important; }
+  .max-h-#{$key} { height: $value !important; }
+}
+
+.pe-cursor-pointer {
+  cursor: pointer;
+}
+
+.transition-all {
+  transition: all .15s linear;
+  -moz-transition: all .15s linear;
+  -webkit-transition: all .15s linear;
+}

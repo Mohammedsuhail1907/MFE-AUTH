@@ -1,0 +1,256 @@
+@import 'variables';
+@import 'primeng/resources/primeng';
+@import 'primeng/resources/themes/lara-light-blue/theme';
+
+.p-inputtext {
+    border-radius: map-get($radius, base);
+    border: 1px solid map-get($colors, strokegray);
+    font-size: map-get($font-sizes, base);
+    color: map-get($colors, darkgray);
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+
+    &.no-focus:enabled:focus {
+        box-shadow: none;
+    }
+
+    &:enabled:focus {
+        box-shadow: 0 0 6px rgba(map-get($colors, primary), $alpha: 0.18);
+    }
+
+    &.ng-invalid.ng-dirty {
+        border-color: map-get($colors, danger) !important;
+    }
+
+    &+.p-icon-wrapper {
+        color: map-get($colors, gray);
+    }
+}
+
+.p-inputotp {
+    .p-inputtext {
+        font-size: map-get($font-sizes, h4);
+        height: 48px;
+        margin: 0 map-get($spacings, 2);
+        color: var();
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .p-inputtext {
+            margin: 0 map-get($spacings, 1);
+        }
+    }
+}
+
+.p-fluid {
+    .p-tieredmenu {
+        width: 100%;
+    }
+}
+
+// Dropdown Style Starts
+.p-dropdown {
+    .p-overlay {
+        min-width: 200px !important;
+    }
+
+    .p-dropdown-panel {
+        background: var(--surface);
+        padding: 0.6rem;
+
+        .p-dropdown-item {
+            font-size: map-get($font-sizes, base);
+            color: var(--menu-label);
+            border-radius: map-get($radius, base);
+            padding: 0.5rem 0.625rem;
+
+            &:hover,
+            &.p-highlight,
+            &.focus {
+                background: var(--btn-white-hover);
+            }
+        }
+    }
+}
+
+.p-submenu-header {
+    padding: 0;
+
+    span {
+        padding: 8px 10px;
+    }
+
+    span:empty {
+        display: none;
+    }
+}
+
+// Dropdown Style Ends
+
+// Menu Overlay Style Starts
+.p-menu-overlay {
+    background: var(--surface);
+    padding: 0.6rem;
+    width: auto;
+    min-width: 200px;
+
+    .p-menuitem {
+        margin-bottom: 0.313rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .p-menuitem-content {
+            border-radius: map-get($radius, base);
+
+            &:hover {
+                background: var(--btn-white-hover);
+            }
+        }
+
+        .p-menuitem-link {
+            font-size: map-get($font-sizes, base);
+            padding: 0.5rem 0.625rem;
+
+            .p-menuitem-icon {
+                margin-right: 0.625rem;
+                font-size: 0.875rem;
+                color: var(--menu-label);
+            }
+
+            .p-menuitem-text {
+                color: var(--menu-label);
+            }
+        }
+    }
+}
+
+// Menu Overlsy Style Ends
+
+// Overlay Panel Style Starts
+.p-overlaypanel {
+    background: var(--surface);
+    color: var(--text);
+
+    &:before {
+        border-bottom-color: var(--overlaypanel-top-stroke);
+    }
+
+    &:after {
+        border-bottom-color: var(--surface);
+    }
+}
+
+// Toast Style (warn & error variants)
+.p-toast {
+    width: auto !important;
+    max-width: 500px;
+    min-width: 380px;
+
+    .p-toast-message {
+        background: map-get($colors, white);
+        border-radius: 12px;
+        box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.13);
+        padding: 0.5rem 0.75rem; // Reduced padding
+        position: relative;
+        overflow: hidden;
+        border: none !important; // Remove default borders to avoid double "color code"
+    }
+
+    .p-toast-message::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 6px; // Slightly thicker for clear single strip
+
+        border-radius: 0;
+        background: map-get($colors, strokegray);
+    }
+
+    .p-toast-message-content {
+        display: flex;
+        align-items: flex-start; // Align top for multi-line text
+        gap: 0.75rem;
+    }
+
+    .p-toast-message-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px; // Visual alignment with text top
+    }
+
+    .p-toast-message-text {
+        flex: 1; // Take remaining width
+        word-break: break-word; // Vital for long strings
+        overflow-wrap: break-word;
+
+        .p-toast-summary {
+            font-weight: map-get($font-weights, semibold);
+            font-size: map-get($font-sizes, sm); // Slightly larger
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .p-toast-detail {
+            color: map-get($colors, gray);
+            font-weight: map-get($font-weights, regular);
+            font-size: map-get($font-sizes, xs);
+            line-height: 1.4;
+            display: block; // Ensure block display for wrapping
+        }
+    }
+
+    .p-toast-icon-close {
+        color: map-get($colors, lightgray);
+        align-self: flex-start;
+        margin-top: 2px;
+    }
+
+    // Warn variant (yellow)
+    .p-toast-message-warn {
+        &::before {
+            background: map-get($colors, warning);
+        }
+
+        .p-toast-message-icon {
+            background: rgba(map-get($colors, warning), 0.12);
+            color: map-get($colors, warning);
+        }
+
+        .p-toast-summary {
+            color: map-get($colors, warning);
+        }
+    }
+
+    // Error variant (red)
+    .p-toast-message-error {
+        &::before {
+            background: map-get($colors, danger);
+        }
+
+        .p-toast-message-icon {
+            background: rgba(map-get($colors, danger), 0.12);
+            color: map-get($colors, danger);
+        }
+
+        .p-toast-summary {
+            color: map-get($colors, danger);
+        }
+    }
+}

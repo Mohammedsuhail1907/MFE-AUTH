@@ -1,0 +1,5 @@
+<div>
+    <app-common-otp-auth [title]="headerText" [labelText]="labelText" [isLoading]="isLoginLoading"
+        [isPageLoading]="isPageLoading" [image]="'/images/OTPVerification.svg' | assetUrl" [otpLength]="otpLength"
+        (otpSubmit)="onOtpSubmit($event)" (resend)="onOtpResend()"></app-common-otp-auth>
+</div>

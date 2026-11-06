@@ -1,0 +1,53 @@
+{
+  "name": "auth",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "build:single-spa:auth": "ng build auth --configuration production",
+    "serve:single-spa:auth": "ng s --project auth --disable-host-check --port 4800 --live-reload false"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^19.2.0",
+    "@angular/common": "^19.2.0",
+    "@angular/compiler": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/platform-browser-dynamic": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "@ngx-translate/core": "^16.0.4",
+    "@ngx-translate/http-loader": "^16.0.1",
+    "bootstrap": "^5.3.6",
+    "crypto-js": "^4.2.0",
+    "ngx-captcha": "^13.0.0",
+    "ngx-webstorage": "^21.0.1",
+    "primeng": "^17.18.15",
+    "rxjs": "~7.8.0",
+    "single-spa": ">=4.0.0",
+    "single-spa-angular": "^9.2.0",
+    "systemjs-webpack-interop": "^2.3.7",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "19.0.0",
+    "@angular-devkit/build-angular": "^19.2.1",
+    "@angular/cli": "^19.2.1",
+    "@angular/compiler-cli": "^19.2.0",
+    "@types/crypto-js": "^4.2.2",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.6.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "style-loader": "^3.3.1",
+    "typescript": "~5.7.2"
+  }
+}

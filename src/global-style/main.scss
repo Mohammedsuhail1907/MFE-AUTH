@@ -1,0 +1,173 @@
+// Boot-wrap splash screen — must be outside @layer so it loads before Angular
+@import 'hfactor-bootwrap';
+
+@layer bootstrap, primeng, custom;
+
+@layer primeng {
+    @import 'custom-primeng';
+}
+
+@layer bootstrap {
+    @import 'custom-bootstrap';
+}
+
+@layer custom {
+    // Custom Layer Starts
+    @import 'variables';
+    @import 'typography';
+    @import 'colors';
+    @import 'buttons';
+    @import 'utilities';
+    @import 'theme';
+
+    body {
+        background-color: var(--background);
+        color: var(--text);
+        transition: all 0.3s ease;
+    }
+
+    @each $name, $color in $colors {
+        .btn-#{$name} {
+            border-radius: map-get($radius, base);
+        }
+    }
+
+    // SidebarNav Style Starts
+    .sidebar-nav {
+        width: 250px;
+        background: var(--surface);
+
+        .menu {
+            .menu-item {
+                .menu-label {
+                    color: var(--menu-label);
+
+                    &:hover {
+                        background: var(--menu-label-hover);
+                    }
+                }
+
+                &.has-children {
+                    .submenu {
+                        background: var(--surface);
+                        min-width: 230px;
+                        display: none;
+
+                        &.expanded {
+                            display: flex;
+                        }
+
+                        .submenu-item {
+                            color: var(--menu-label);
+                            border-bottom: 1px solid var(--stroke);
+
+                            &:first-child {
+                                border-radius: 4px 4px 0 0;
+                            }
+
+                            &:last-child {
+                                border-radius: 0 0 4px 4px;
+                            }
+
+                            &:hover {
+                                background: var(--menu-label-hover);
+                            }
+
+                            &:last-child {
+                                border: none !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .bottom-nav {
+            background: var(--surface)
+        }
+
+        @media only screen and (max-width: 991px) {
+            right: 0;
+        }
+    }
+
+    // Compact Sidebar Style Starts
+    .compact {
+        .sidebar-nav {
+            width: 64px;
+
+            .has-children {
+                display: none;
+            }
+
+            .submenu {
+                display: none !important;
+            }
+
+            .bottom-nav {
+                flex-flow: column;
+
+                .btn-white {
+                    margin: 5px 0;
+
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        header {
+            padding-left: 88px;
+        }
+    }
+
+    // Compact Sidebar Style Ends
+
+    // SidebarNav Style Ends
+
+    // Header Style Starts
+    header {
+        padding-left: 274px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--header-stroke);
+
+        .p-inputtext {
+            background: transparent;
+        }
+
+        .p-input-icon {
+            color: var(--menu-label);
+        }
+
+        .p-dropdown {
+            border: none;
+            background: var(--header-dd-bg);
+
+            .p-inputtext {
+                border: none;
+                padding: 5px 2px 5px 12px;
+                color: var(--text);
+            }
+
+            .p-dropdown-trigger {
+                width: 2.2rem;
+                color: var(--text);
+            }
+        }
+
+        @media only screen and (max-width: 991px) {
+            padding-left: 1.5rem;
+        }
+
+        @media only screen and (max-width: 991px) {
+            padding-left: 1rem;
+        }
+    }
+
+    // Header Style Ends
+
+
+}
+
+// Custom Layer Ends

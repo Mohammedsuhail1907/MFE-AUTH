@@ -1,0 +1,79 @@
+<div class="container-fluid p-0 bg-white font-inter" style="height: 100vh; overflow: hidden;">
+  <div class="row g-0 h-100">
+
+    <!-- Left panel: lavender background + illustration -->
+    <div class="col-12 col-md-6 d-none d-md-flex align-items-center justify-content-center h-100"
+      style="background: linear-gradient(160deg, #f0ecff 0%, #e4dcff 100%);">
+      <img [src]="image" alt="Illustration" class="img-fluid w-75" style="max-height: 500px; object-fit: contain;">
+    </div>
+
+    <!-- Right panel: full height, flex column -->
+    <div class="col-12 col-md-6 d-flex flex-column h-100 p-4 p-md-5 overflow-auto">
+
+      <!-- Logo pinned at top -->
+      <div class="mb-4">
+        <img [src]="(BusinessType == 3 ? '/images/ciel-logo.png' : '/images/hfactor-logo-dark.png') | assetUrl"
+          alt="Logo" class="img-fluid" [style.max-width]="BusinessType == 3 ? '150px' : '175px'" style="height: auto; display: block;">
+      </div>
+
+      <!-- Centered form content -->
+      <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+        <div class="w-100 d-flex flex-column align-items-center text-center" style="max-width: 420px;">
+
+          <!-- Lock icon with light-primary background -->
+          <div class="mb-3 d-flex align-items-center justify-content-center rounded-2 bg-primary10"
+            style="width: 52px; height: 52px;">
+            <i class="pi pi-lock text-primary" style="font-size: 1.35rem;"></i>
+          </div>
+
+          <h2 class="fw-bold mb-2" style="color: #1a1a2e;">{{ title }}</h2>
+          <p class="text-secondary mb-4" style="font-size: 0.92rem;">{{ labelText }}</p>
+
+          <div *ngIf="isPageLoading" class="d-flex justify-content-center py-5">
+            <p-progressSpinner styleClass="w-3 h-3" strokeWidth="4" animationDuration=".8s"></p-progressSpinner>
+          </div>
+
+          <form *ngIf="!isPageLoading" [formGroup]="otpForm" (ngSubmit)="onSubmit()" class="w-100">
+
+            <div class="d-flex justify-content-center mb-3">
+              <p-inputOtp formControlName="otp" [length]="otpLength"></p-inputOtp>
+            </div>
+
+            <div *ngIf="otpForm.get('otp')?.touched && otpForm.get('otp')?.invalid" class="text-danger mb-2">
+              <small *ngIf="otpForm.get('otp')?.errors?.['required']">OTP is required.</small>
+            </div>
+
+            <div class="mb-4 text-end" style="width: 100%;">
+              <span class="text-secondary" style="font-size: 0.88rem;">Didn't get OTP? </span>
+              <span class="fw-semibold text-primary" style="font-size: 0.88rem;" *ngIf="isTimerRunning">Resend in {{ countdown }}s</span>
+              <a href="javascript:void(0)" class="text-primary fw-semibold text-decoration-none"
+                style="font-size: 0.88rem;" *ngIf="!isTimerRunning" (click)="resendCode()">Resend Code</a>
+            </div>
+
+            <button type="submit" [disabled]="otpForm.invalid || isLoading"
+              class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2">
+              <ng-container *ngIf="isLoading">
+                <i class="pi pi-spin pi-spinner small-spinner"></i>
+                <span>Verifying...</span>
+              </ng-container>
+              <span *ngIf="!isLoading">Verify & Proceed</span>
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer pinned at bottom -->
+      <footer class="w-100 text-center mt-4" *ngIf="footerConfig && footerConfig.showFooter">
+        <div class="d-flex flex-column align-items-center gap-1">
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <span class="text-secondary" style="font-size: 11px;">{{ footerConfig.poweredByText }}</span>
+            <img [src]="'/images/' + footerConfig.logo | assetUrl" alt="Logo" style="width: 70px; height: auto;">
+          </div>
+          <small class="text-secondary" style="font-size: 11px;">{{ footerConfig.allRightsReservedText }}</small>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+</div>

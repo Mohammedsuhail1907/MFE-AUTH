@@ -1,0 +1,40 @@
+{
+    "SECURITY_BASE_URL": "https://cielhr.integrumapps.com/security.api/",
+    "API_BASE_URL": "https://cielhr.integrumapps.com/hrsuite.api/",
+    "HRDEV_API_URL": "https://stfdev.hfactor.app/hrdevapi/",
+    "OBJECTSTORAGE_BASE_URL": "https://cielhr.integrumapps.com/objectstorage.api/",
+    "Admin_BASE_URL": "https://cielhr.integrumapps.com/Admin.Api/api/",
+    "FINANCE_BASE_URL": "https://cielhr.integrumapps.com/hrsuite.api/",
+    "urlCode": "qc",
+    "GooglePlayUrl": "https://play.google.com/store/apps/details?id=com.integrumsolutions.zeel&hl=en_IN",
+    "AppStoreUrl": "https://apps.apple.com/in/app/hfactor/id6446683742",
+    "ShowHelpLink": true,
+    "HelpLinkUrl": "",
+    "EncryptRequest": true,
+    "DecryptResponse": true,
+    "ForgotpwdOTPlength": 6,
+    "candidateAuth": {
+        "OTPLength": 5,
+        "OTPHeaderText": "Verify Your Account",
+        "OTPSubTitle": "A One Time Password (OTP) has been sent to your mobile and email. Please enter it below to continue.."
+    },
+    "accessDeniedConfig": {
+        "logoFileName": "ciel-logo.png",
+        "centerImageName": "Unauthorized.png",
+        "title": "Unauthorized Access",
+        "subTitle": "You are not authorized to access this page due to the following reasons:",
+        "reasons": [
+            "Your request is pending with QC.",
+            "Your request has already been claimed by HR. Please contact the HR team."
+        ],
+        "contactText": "For further clarity, please contact the HR team.",
+        "copyrightText": "© 2026 - 2027 HfactoR. All rights reserved.",
+        "footerLogoFileName": "hfactor-logo-dark.png"
+    },
+    "Footer": {
+        "showFooter": true,
+        "logo": "hfactor-logo-dark.png",
+        "poweredByText": "Powered by",
+        "allRightsReservedText": "© 2026 - 2027 HfactoR. All rights reserved."
+    }
+}

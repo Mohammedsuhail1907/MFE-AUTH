@@ -1,0 +1,93 @@
+trigger:
+  - main
+  - develop
+  - auth_i18n_baseSetupauth_i18n_baseSetup
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  nodeVersion: '20.19.0'
+
+stages:
+  - stage: Build
+    displayName: 'Build Stage'
+    jobs:
+      - job: Build
+        displayName: 'Build Job'
+        steps:
+          # FIX: Bypass NodeTool task entirely — install Node 20 directly via nvm
+          # The hosted agent has nvm pre-installed, so we source it and install Node 20
+          - script: |
+              export NVM_DIR="$HOME/.nvm"
+              [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+              nvm install 20.19.0
+              nvm use 20.19.0
+              nvm alias default 20.19.0
+
+              # Make this Node version available to all subsequent steps
+              echo "##vso[task.prependpath]$NVM_DIR/versions/node/v20.19.0/bin"
+
+              echo "Node version: $(node -v)"
+              echo "NPM version:  $(npm -v)"
+            displayName: 'Install Node.js 20 via nvm'
+
+          # Confirm Node 20 is active before proceeding
+          - script: |
+              echo "Node: $(node -v)"
+              echo "NPM:  $(npm -v)"
+              node -v | grep -E "^v20\." || (echo "##[error]Node 20 not active — got $(node -v)" && exit 1)
+            displayName: 'Verify Node.js version'
+
+          - task: Cache@2
+            displayName: 'Cache node_modules'
+            inputs:
+              key: 'npm | "$(Agent.OS)" | package-lock.json'
+              restoreKeys: |
+                npm | "$(Agent.OS)"
+              path: '$(System.DefaultWorkingDirectory)/node_modules'
+
+          # Install dependencies using the existing package-lock.json
+          - script: |
+              echo "Node: $(node -v) | NPM: $(npm -v)"
+              npm ci --legacy-peer-deps
+              echo "Dependencies installed."
+            displayName: 'Install dependencies'
+
+          # Uncomment these when lint and test scripts are ready in package.json
+          # - script: |
+          #     npm run lint
+          #   displayName: 'Run linting'
+
+          # - script: |
+          #     npm run test -- --coverage --watch=false
+          #   displayName: 'Run unit tests'
+
+          - script: |
+              echo "Building with Node: $(node -v)"
+              npm run build:single-spa:auth
+            displayName: 'Build application'
+
+          - task: PublishTestResults@2
+            displayName: 'Publish test results'
+            condition: |
+              and(succeededOrFailed(), eq(variables['testsRan'], 'true'))
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/TESTS-*.xml'
+              searchFolder: '$(System.DefaultWorkingDirectory)'
+
+          - task: PublishCodeCoverageResults@2
+            displayName: 'Publish code coverage'
+            condition: |
+              and(succeededOrFailed(), eq(variables['testsRan'], 'true'))
+            inputs:
+              summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish build artifacts'
+            inputs:
+              pathToPublish: '$(System.DefaultWorkingDirectory)/dist'
+              artifactName: 'mfe-auth'
+              publishLocation: 'Container'

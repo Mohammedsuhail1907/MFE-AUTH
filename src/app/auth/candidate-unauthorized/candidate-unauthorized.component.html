@@ -1,0 +1,96 @@
+<main class="d-flex align-items-center min-vh-100 w-100 overflow-x-hidden position-relative bg-white font-inter">
+      <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden"
+            style="z-index: 0; pointer-events: none;">
+            <!-- Existing Assets -->
+            <img src="assets/images/l-img1.svg" alt="" class="position-absolute bottom-0 start-0"
+                  style="width: 300px; max-width: 40%; opacity: 0.4;" />
+            <img src="assets/images/r-img1.svg" alt="" class="position-absolute top-0 end-0"
+                  style="width: 300px; max-width: 40%; opacity: 0.4;" />
+
+            <!-- Random Decorative Shapes (Simulating Vector Confetti) -->
+            <!-- Top Left - Blue Circle -->
+            <div class="position-absolute rounded-circle bg-primary"
+                  style="top: -5%; left: 10%; width: 150px; height: 150px; opacity: 0.05;"></div>
+
+            <!-- Top Right - Small Rotated Bar -->
+            <div class="position-absolute bg-secondary"
+                  style="top: 15%; right: 25%; width: 80px; height: 15px; transform: rotate(45deg); opacity: 0.1;">
+            </div>
+
+            <!-- Center Left - Large Faint Circle -->
+            <div class="position-absolute rounded-circle bg-primary"
+                  style="top: 40%; left: -5%; width: 300px; height: 300px; opacity: 0.03;"></div>
+
+            <!-- Bottom Right - Blue Bar -->
+            <div class="position-absolute bg-primary"
+                  style="bottom: 20%; right: 15%; width: 120px; height: 25px; transform: rotate(-30deg); opacity: 0.08;">
+            </div>
+
+            <!-- Center Right - Small Circle -->
+            <div class="position-absolute rounded-circle bg-warning"
+                  style="top: 30%; right: 10%; width: 60px; height: 60px; opacity: 0.1;"></div>
+
+            <!-- Bottom Center - Floating shape -->
+            <div class="position-absolute rounded-circle bg-secondary"
+                  style="bottom: 10%; left: 30%; width: 40px; height: 40px; opacity: 0.1;"></div>
+      </div>
+
+      <!-- Content Layer -->
+      <div class="position-relative w-100 min-vh-100 d-flex flex-column justify-content-center py-5"
+            style="z-index: 1;">
+            <div class="position-absolute top-0 start-0 m-4">
+                  <img [src]="'/images/' + accessDeniedConfig.logoFileName | assetUrl" alt="Hfactor Logo" width="165"
+                        height="70" />
+            </div>
+
+            <div class="container my-auto">
+                  <div class="row justify-content-center">
+                        <div class="col-12 col-sm-11 col-md-9 col-lg-7 d-flex flex-column align-items-center text-center">
+
+                              <!-- Center Image -->
+                              <img [src]="'/images/' + accessDeniedConfig.centerImageName | assetUrl"
+                                    alt="Access Restricted" class="img-fluid mb-4"
+                                    style="max-height: 260px;" />
+
+                              <!-- Title -->
+                              <h1 class="text-primary font-bold mb-4 line-height-3 text-2xl">{{ accessDeniedConfig.title }}</h1>
+
+                              <!-- Reasons Card -->
+                              <div class="border rounded px-4 py-3 mb-3 w-100 text-center"
+                                    style="border-color: #dee2e6 !important; background: #fff;">
+                                    <p class="text-color-secondary text-sm mb-2">{{
+                                          accessDeniedConfig.subTitle }}</p>
+                                    <ul class="list-unstyled mb-0">
+                                          <li *ngFor="let reason of accessDeniedConfig.reasons"
+                                                class="mb-1 d-flex align-items-center justify-content-center text-color-secondary text-sm line-height-3">
+                                                <i class="pi pi-circle-fill text-primary me-2 flex-shrink-0"
+                                                      style="font-size: 0.4rem;"></i>
+                                                <span>{{ reason }}</span>
+                                          </li>
+                                    </ul>
+                              </div>
+
+                              <!-- Contact Text -->
+                              <p class="text-color-secondary text-sm line-height-3">
+                                    {{ accessDeniedConfig.contactText }}
+                              </p>
+
+                        </div>
+                  </div>
+            </div>
+
+            <footer class="w-100 text-center mt-auto pt-4" *ngIf="footerConfig && footerConfig.showFooter">
+                  <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                              <span class="text-color-secondary text-xs me-2">{{ footerConfig.poweredByText
+                                    }}</span>
+                              <img [src]="'/images/' + footerConfig.logo | assetUrl" alt="Hfactor" width="70"
+                                    height="auto">
+                        </div>
+                        <small class="text-color-secondary text-xs">{{ footerConfig.allRightsReservedText
+                              }}</small>
+                  </div>
+            </footer>
+
+      </div>
+</main>
