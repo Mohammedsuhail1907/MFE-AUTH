@@ -22,7 +22,9 @@ export function init_app(): Promise<void>{
 }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, `${__webpack_public_path__}assets/i18n/`, '.json');
+  const rawBase = (typeof __webpack_public_path__ !== 'undefined' && __webpack_public_path__) ? __webpack_public_path__ : '/';
+  const publicPath = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+  return new TranslateHttpLoader(http, `${publicPath}assets/i18n/`, '.json');
 }
 
 @NgModule({

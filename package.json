@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node scripts/start-app.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:single-spa:auth": "ng build auth --configuration production",
-    "serve:single-spa:auth": "ng s --project auth --disable-host-check --port 4800 --live-reload false"
+    "serve:single-spa:auth": "ng s --project auth --disable-host-check --port 4800 --live-reload false",
+    "build:standalone": "ng run auth:build-standalone",
+    "serve:standalone": "ng run auth:serve-standalone"
   },
   "private": true,
   "dependencies": {

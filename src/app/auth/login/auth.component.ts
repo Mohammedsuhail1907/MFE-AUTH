@@ -25,7 +25,10 @@ declare const __webpack_public_path__: string;
   styleUrl: './auth.component.scss'
 })
 export class AuthComponent implements OnInit {
-  backgroundImageUrl = __webpack_public_path__ + 'assets/images/building-pattern.svg';
+  backgroundImageUrl = (() => {
+    const raw = typeof __webpack_public_path__ !== 'undefined' && __webpack_public_path__ ? __webpack_public_path__ : '/';
+    return (raw.endsWith('/') ? raw : `${raw}/`) + 'assets/images/building-pattern.svg';
+  })();
   username!: string;
   authKey: string = '';
   private _destroyRef = inject(DestroyRef);
