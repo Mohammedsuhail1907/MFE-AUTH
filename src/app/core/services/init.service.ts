@@ -16,10 +16,11 @@ private initialized: boolean = false;
   }
 
   async init(): Promise<void> {
-    try{
-      const baseUrl = __webpack_public_path__;
-    console.log('BASE_REF', __webpack_public_path__)
-    const response = await fetch(`${baseUrl}assets/json/config.json?v=${new Date().getTime()}`);
+    try {
+      const rawBase = (typeof __webpack_public_path__ !== 'undefined' && __webpack_public_path__) ? __webpack_public_path__ : '/';
+      const baseUrl = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+      console.log('BASE_REF', baseUrl);
+      const response = await fetch(`${baseUrl}assets/json/config.json?v=${new Date().getTime()}`);
     const data = await response.json();
     if (data.IsConsoleLogRequired === false && window) {
       window.console.log = window.console.warn = window.console.info = function () { };
