@@ -30,7 +30,7 @@ export const VALIDATION_MESSAGES = {
 // Button / UI label messages
 // ---------------------------------------------------------------------------
 export const UI_LABELS = {
-    BTN_LOGIN: 'Login',
+    BTN_LOGIN: 'Sign in',
     BTN_LOGGING_IN: 'Logging in...',
     BTN_PLEASE_WAIT: 'Please wait...',
     FORGOT_PASSWORD: 'Forgot Password?',

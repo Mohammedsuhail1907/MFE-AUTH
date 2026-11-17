@@ -1,19 +1,15 @@
 @import 'variables';
 
-// Inter Font
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 :root {
-  font-family: "Inter", sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
   font-optical-sizing: auto;
 }
- 
+
 @each $name, $value in $font-sizes {
   .text-#{$name} {
     font-size: $value;
   }
 
-  // Headings
   @if str-index($name, "h") == 1 {
     #{$name} {
       font-size: $value;
@@ -21,14 +17,12 @@
     }
   }
 
-  // Paragraph
   @if $name == base {
     p {
       font-size: $value;
     }
   }
 
-  // Small tag
   @if $name == sm {
     small {
       font-size: $value;

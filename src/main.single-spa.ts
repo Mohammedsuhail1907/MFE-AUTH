@@ -1,3 +1,5 @@
+import 'zone.js';
+console.log('Zone.js loaded:', typeof (window as any).Zone);
 import './set-public-path';
 import { NgZone } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

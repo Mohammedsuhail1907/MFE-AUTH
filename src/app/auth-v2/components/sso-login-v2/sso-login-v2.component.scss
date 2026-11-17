@@ -1,0 +1,125 @@
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.sso-login-content {
+  width: 100%;
+  max-width: 484px;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  color: #1F2225;
+}
+
+/* Back to Login */
+
+.back-to-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 34px;
+  color: #565656;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: none;
+  cursor: pointer;
+
+  i {
+    font-size: 13px;
+  }
+
+  &:hover {
+    color: #191340;
+  }
+}
+
+/* Heading */
+
+.sso-login-heading {
+  margin-bottom: 26px;
+
+  h2 {
+    margin: 0;
+    color: #1F2225;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+}
+
+/* Company Code Field */
+
+.sso-login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  label {
+    color: #1F2225;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  input {
+    width: 100%;
+    height: 48px;
+    padding: 0 12px;
+    border: 1px solid #D6D6D6;
+    border-radius: 6px;
+    outline: none;
+    background: #FFFFFF;
+    color: #1F2225;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+
+    &::placeholder {
+      color: #AAAAAA;
+    }
+
+    &:focus {
+      border-color: #191340;
+    }
+  }
+}
+
+/* Continue with SSO Button */
+
+.continue-sso-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 6px;
+  background: #191340;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background: #252052;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+  .sso-login-content {
+    width: 100%;
+    max-width: 484px;
+  }
+
+  .sso-login-heading h2 {
+    font-size: 22px;
+  }
+}

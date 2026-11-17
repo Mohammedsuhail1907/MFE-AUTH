@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./auth/auth.module').then((m) => m.AuthModule)
   },
+  {
+  path: 'app-auth-v2',
+  loadChildren: () =>
+    import('./auth-v2/auth-v2.module').then(m => m.AuthV2Module)
+},
   { path: '**', component: EmptyRouteComponent },
 ];
 

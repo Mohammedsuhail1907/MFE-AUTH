@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
   loginResponse!: LoginResponses;
   clientCode!: string;
   showForgotPassword: boolean = false;
-  logoSrc: string = '/images/logoipsum-horz.svg';
+  logoSrc: string = '/assets/images/hfactor-logo.png';
   urlCode: string = '';
 
   // Loading states
@@ -106,16 +106,19 @@ export class AuthComponent implements OnInit {
   }
 
   private updateLogoSrc(): void {
-    console.log('Client Code:', this.clientCode);
-    const code = this.clientCode || environment.environment.urlCode || '';
-    console.log('Logo URL:', code ? `/images/${code}-logo.png` : '/images/logoipsum-horz.svg');
-    this.logoSrc = code ? `/images/${code}-logo.png` : '/images/logoipsum-horz.svg';
-  }
+  console.log('Client Code:', this.clientCode);
+
+  const code = this.clientCode || environment.environment.urlCode || '';
+
+  this.logoSrc = code
+    ? `/images/${code}-logo.png`
+    : '/assets/images/hfactor-logo.png';
+}
 
   onLogoError(): void {
-    console.log('Logo image error, using default logo');
-    this.logoSrc = '/images/logoipsum-horz.svg';
-  }
+  console.log('Logo image error, using Hfactor logo');
+  this.logoSrc = '/assets/images/hfactor-logo.png';
+}
 
   createLoginForm() {
     this.loginForm = this.fb.group({

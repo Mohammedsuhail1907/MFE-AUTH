@@ -1,0 +1,36 @@
+
+<div class="sso-login-content">
+
+  <!-- Back to Login -->
+  <a class="back-to-login" href="#/app-auth-v2/login">
+    <i class="pi pi-arrow-left"></i>
+    <span>Back to Login page</span>
+  </a>
+
+  <!-- SSO Heading -->
+  <div class="sso-login-heading">
+    <h2>Login with SSO</h2>
+  </div>
+
+  <!-- SSO Form -->
+  <form (submit)="onSubmit($event)" novalidate>
+
+    <div class="sso-login-field">
+      <label for="companyCode">Company Code</label>
+
+      <input
+        id="companyCode"
+        type="text"
+        placeholder="Enter Company Code"
+        autocomplete="organization"
+        required
+      />
+    </div>
+
+    <button type="submit" class="continue-sso-button">
+      Continue with SSO
+    </button>
+
+  </form>
+
+</div>

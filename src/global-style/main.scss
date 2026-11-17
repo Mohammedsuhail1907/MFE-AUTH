@@ -1,7 +1,12 @@
-// Boot-wrap splash screen — must be outside @layer so it loads before Angular
-@import 'hfactor-bootwrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
+// Boot-wrap splash screen — must be outside @layer so it loads before Angular
+
+@import 'hfactor-bootwrap';
+@import 'primeicons/primeicons.css';
 @layer bootstrap, primeng, custom;
+
+
 
 @layer primeng {
     @import 'custom-primeng';
@@ -171,3 +176,22 @@
 }
 
 // Custom Layer Ends
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.auth-v2-layout,
+.auth-v2-layout *:not(.pi):not(.pi::before):not(.pi::after) {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.auth-v2-layout .pi,
+.auth-v2-layout .pi::before {
+  font-family: 'primeicons' !important;
+}

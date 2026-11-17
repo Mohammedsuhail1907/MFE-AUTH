@@ -1,0 +1,415 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+:host,
+:host *,
+:host *::before,
+:host *::after {
+  box-sizing: border-box;
+}
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.auth-card {
+  display: block;
+  position: relative;
+  width: 400px;
+  min-width: 0;
+  max-width: 400px;
+  min-height: 556.84px;
+  margin: 0 auto;
+  padding: 0;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none !important;
+}
+
+.auth-card .card-body {
+  display: block;
+  width: 100%;
+  min-height: 556.84px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HFACTOR CLIENT LOGO */
+
+/* Client logo */
+.hfactor-client-logo {
+  width: 180px;
+  height: 64px;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #ffffff;
+}
+
+.hfactor-client-logo img {
+  display: block;
+  width: 180px;
+  height: 64px;
+  max-width: 180px;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+/* LOGIN CONTENT */
+
+.login-content,
+.login-content form {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.login-heading {
+  margin: 0 0 13px;
+}
+
+.login-content .login-heading h1,
+.login-content .login-heading h4 {
+  margin: 0 0 6px !important;
+  color: #1c1c1c !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  line-height: 32px !important;
+  letter-spacing: -0.24px !important;
+}
+
+.login-content .login-heading p {
+  margin: 0 !important;
+  color: #565656 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
+
+.login-content .form-label {
+  display: block;
+  margin-bottom: 6px !important;
+  color: #1c1c1c;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: normal;
+  letter-spacing: 0.12px;
+}
+
+.login-content .mb-3 {
+  margin-bottom: 10px !important;
+}
+
+.login-content .mb-2 {
+  margin-bottom: 0 !important;
+}
+
+/* PRIMENG INPUTS AND PASSWORD */
+
+/* Username and password input fields - reference dimensions */
+:host ::ng-deep .login-content .p-inputtext,
+:host ::ng-deep .login-content .p-password .p-password-input {
+  display: block;
+  width: 100% !important;
+  max-width: 400px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 11px 12px 11px 16px !important;
+  border: 1px solid #E5E5E5 !important;
+  border-radius: 8px !important;
+  background: #FFFFFF !important;
+  color: #1F2225 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 16px !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+:host ::ng-deep .login-content .p-inputtext::placeholder,
+:host ::ng-deep .login-content .p-password-input::placeholder {
+  color: #A0A0A0 !important;
+  opacity: 1;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+:host ::ng-deep .login-content .p-inputtext:enabled:focus {
+  border-color: #130F40;
+  box-shadow: none;
+}
+
+:host ::ng-deep .login-content .p-inputtext.ng-invalid.ng-dirty,
+:host ::ng-deep .login-content .p-password .p-password-input.ng-invalid.ng-dirty {
+  border-color: #D61C2A !important;
+}
+
+:host ::ng-deep .login-content .p-fluid,
+:host ::ng-deep .login-content .p-password {
+  width: 100% !important;
+  max-width: 400px !important;
+}
+
+:host ::ng-deep .login-content .p-password {
+  position: relative !important;
+  display: block !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  box-sizing: border-box !important;
+}
+
+:host ::ng-deep .login-content .p-password input,
+:host ::ng-deep .login-content .p-password .p-password-input {
+  width: 100% !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 11px 42px 11px 16px !important;
+  box-sizing: border-box !important;
+}
+
+:host ::ng-deep .login-content .p-password .p-icon-wrapper {
+  position: absolute !important;
+  top: 0 !important;
+  right: 12px !important;
+  bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+:host ::ng-deep .login-content .p-error {
+  color: #D61C2A;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.login-content small.text-danger {
+  color: #D61C2A !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* FORGOT PASSWORD */
+
+:host ::ng-deep .login-content .forgot-password {
+  display: block !important;
+  width: 100% !important;
+  text-align: right !important;
+
+  margin-top: 18px !important;
+  margin-bottom: 0 !important;
+
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+
+  color: #1560D6 !important;
+  text-decoration: none !important;
+}
+/* LOGIN BUTTON */
+
+.login-content form button[type="submit"],
+.login-content form button.btn.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 12px;
+  border: 1px solid #130F40;
+  border-radius: 5px;
+  background: #130F40;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 24px !important;
+  letter-spacing: 0 !important;
+  box-shadow: none;
+}
+
+.login-content form button[type="submit"]:hover,
+.login-content form button[type="submit"]:focus,
+.login-content form button[type="submit"]:active {
+  border-color: #1D1850;
+  background: #1D1850;
+  color: #FFFFFF;
+}
+
+.login-content form button[type="submit"]:disabled {
+  border-color: #403B66;
+  background: #403B66;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* SERVER ERROR */
+
+.login-content .server-error-banner {
+  border: 1px solid #F5C6CB;
+  border-radius: 5px;
+  background: #FFF4F4;
+  color: #7A1E1E;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.login-content .server-error-banner i.pi-shield {
+  color: #C0392B;
+  font-size: 13px;
+}
+
+/* DIVIDER */
+
+.login-content .login-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin: 24px 0;
+}
+
+.login-content .login-divider span {
+  flex: 1;
+  height: 1px;
+  background: #E5E5E5;
+}
+
+.login-content .login-divider small {
+  flex: 0 0 auto;
+  color: #565656;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400;
+  line-height: 20px !important;
+  letter-spacing: 0;
+}
+
+/* SSO BUTTON */
+
+.login-content .sso-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 8px 16px !important;
+  border: 1px solid #CCCCCC !important;
+  border-radius: 8px !important;
+  background-color: #FFFFFF !important;
+  color: #1F2225 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+/* ADMINISTRATOR MESSAGE */
+
+.login-content .admin-message {
+  margin: 12px 0 !important;
+  color: #545659;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400;
+  line-height: 18px !important;
+  letter-spacing: 0;
+  text-align: center;
+  width: 100%;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 767px) {
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .auth-card {
+  display: block;
+  width: 100% !important;
+  max-width: 400px !important;
+  min-width: 0 !important;
+  min-height: 556.84px;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.auth-card .card-body {
+  display: block !important;
+  width: 100% !important;
+  min-height: 556.84px;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+  .hfactor-client-logo {
+    width: 220px !important;
+    max-width: 100% !important;
+    margin-bottom: 18px !important;
+  }
+
+  .login-content,
+  .login-content form,
+  .login-content form .mb-3,
+  .login-content form .mb-2,
+  .login-content .p-fluid,
+  .login-content .position-relative,
+  :host ::ng-deep .login-content input,
+  :host ::ng-deep .login-content .p-inputtext,
+  :host ::ng-deep .login-content .p-password,
+  .login-content form button[type="submit"],
+  .login-content form .p-button {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
