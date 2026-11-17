@@ -14,8 +14,6 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 
-
-
 @NgModule({
   declarations: [
     AuthLayoutV2Component,

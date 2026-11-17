@@ -7,18 +7,17 @@ import { AlertService } from '../../../core/services/alert.service';
 
 enum ForgotPasswordStep {
   USERNAME = 'username',
-  OTP = 'otp'
+  OTP = 'otp',
+  RESET_PASSWORD = 'reset-password'
 }
 
 @Component({
   selector: 'auth-forgot-password-v2',
   standalone: false,
   templateUrl: './forgot-password-v2.component.html',
-  styleUrl: './forgot-password-v2.component.scss',
-  
+  styleUrl: './forgot-password-v2.component.scss'
 })
 export class ForgotPasswordV2Component implements OnInit {
-
   companyId: number = 0;
   userType: any;
   clientCode: string = '';
@@ -26,14 +25,19 @@ export class ForgotPasswordV2Component implements OnInit {
 
   isGetOtpLoading = false;
   enteredUsername = '';
-  OTPKey: any;
+  otpKey: any;
 
   currentStep = ForgotPasswordStep.USERNAME;
-ForgotPasswordStep = ForgotPasswordStep;
+  ForgotPasswordStep = ForgotPasswordStep;
 
-otpValue = '';
-ForgotpwdOTPlength = 6;
-isVerifyOtpLoading = false;
+  otpValue = '';
+  ForgotpwdOTPlength = 6;
+  isVerifyOtpLoading = false;
+
+  newPassword = '';
+  confirmPassword = '';
+  isResetPasswordLoading = false;
+
   constructor(
     private route: ActivatedRoute,
     private authService: AuthenticationService,
@@ -46,16 +50,22 @@ isVerifyOtpLoading = false;
       this.userType = params.get('userType') || '';
       this.clientCode = params.get('clientCode') || '';
       this.authConfigId = Number(params.get('authConfigId') || 0);
-
-      console.log('Forgot Password Context:', {
-        companyId: this.companyId,
-        userType: this.userType,
-        clientCode: this.clientCode,
-        authConfigId: this.authConfigId
-      });
     });
   }
 
+  /* EXTRACT API ERROR MESSAGE */
+  private getApiErrorMessage(error: any, fallback: string): string {
+    return (
+      error?.error?.Message ||
+      error?.error?.message ||
+      error?.Message ||
+      error?.message ||
+      (typeof error?.error === 'string' ? error.error : '') ||
+      fallback
+    );
+  }
+
+  /* SUBMIT USERNAME */
   onSubmit(event: Event): void {
     event.preventDefault();
 
@@ -86,102 +96,105 @@ isVerifyOtpLoading = false;
       return;
     }
 
-    this.requestOTP();
+    this.requestOtp();
   }
 
-
-requestOTP(): void {
-  if (this.isGetOtpLoading) {
-    return;
-  }
-
-  this.isGetOtpLoading = true;
-
-  const requestParams =
-    'companyId=' + this.companyId +
-    '&userType=' + encodeURIComponent(this.userType) +
-    '&userName=' + encodeURIComponent(this.enteredUsername) +
-    '&authConfigId=' + this.authConfigId +
-    '&clientCode=' + encodeURIComponent(this.clientCode || '');
-
-  this.authService.getUserOTP(requestParams).subscribe(
-    (data: any) => {
-      if (data && data.Status && data.Result?.OTPKey) {
-
-        this.OTPKey = data.Result.OTPKey;
-
-        // Move to OTP screen
-        this.currentStep = ForgotPasswordStep.OTP;
-        this.otpValue = '';
-
-        this.alertService.showSuccess('OTP sent successfully.');
-
-      } else {
-        this.alertService.showWarning(
-          data?.Message || 'Unable to send OTP.'
-        );
-      }
-
-      this.isGetOtpLoading = false;
-    },
-    (error: any) => {
-      console.error('Request OTP error:', error);
-
-      this.alertService.showError(
-        'Failed to send OTP. Please try again.'
-      );
-
-      this.isGetOtpLoading = false;
+  /* REQUEST OTP */
+  requestOtp(): void {
+    if (this.isGetOtpLoading) {
+      return;
     }
-  );
-}
 
-onVerifyOtp(): void {
+    this.isGetOtpLoading = true;
 
-  if (
-    !this.otpValue ||
-    this.otpValue.length !== this.ForgotpwdOTPlength ||
-    this.isVerifyOtpLoading
-  ) {
-    return;
-  }
+    const requestParams =
+      'companyId=' + this.companyId +
+      '&userType=' + encodeURIComponent(this.userType) +
+      '&userName=' + encodeURIComponent(this.enteredUsername) +
+      '&authConfigId=' + this.authConfigId +
+      '&clientCode=' + encodeURIComponent(this.clientCode || '');
 
-  this.isVerifyOtpLoading = true;
+    this.authService.getUserOTP(requestParams).subscribe({
+      next: (data: any) => {
+        if (data && data.Status && data.Result?.OTPKey) {
+          this.otpKey = data.Result.OTPKey;
 
-  const requestBody = JSON.stringify({
-    UserId: this.OTPKey,
-    OTP: this.otpValue,
-    ACID: this.authConfigId,
-    CC: this.clientCode
-  });
+          this.currentStep = ForgotPasswordStep.OTP;
+          this.otpValue = '';
 
-  this.authService.validateOTP(requestBody).subscribe(
-    (data: any) => {
+          // Display the actual API success message
+          if (data.Message) {
+            this.alertService.showSuccess(data.Message);
+          }
+        } else {
+          // Display the actual API failure message
+          this.alertService.showWarning(
+            data?.Message || 'Unable to send OTP.'
+          );
+        }
 
-      if (data && data.Status && data.Result) {
-        this.alertService.showSuccess(
-          'OTP verified successfully.'
-        );
-
-        console.log('OTP verification successful:', data.Result);
-
-      } else {
+        this.isGetOtpLoading = false;
+      },
+      error: (error: any) => {
         this.alertService.showError(
-          data?.Message || 'Invalid OTP. Please try again.'
+          this.getApiErrorMessage(
+            error,
+            'Failed to send OTP. Please try again.'
+          )
         );
+
+        this.isGetOtpLoading = false;
       }
+    });
+  }
 
-      this.isVerifyOtpLoading = false;
-    },
-    (error: any) => {
-      console.error('OTP verification error:', error);
-
-      this.alertService.showError(
-        'OTP verification failed. Please try again.'
-      );
-
-      this.isVerifyOtpLoading = false;
+  /* VERIFY OTP */
+  onVerifyOtp(): void {
+    if (
+      !this.otpValue ||
+      this.otpValue.length !== this.ForgotpwdOTPlength ||
+      this.isVerifyOtpLoading
+    ) {
+      return;
     }
-  );
-}
+
+    this.isVerifyOtpLoading = true;
+
+    const requestBody = JSON.stringify({
+      UserId: this.otpKey,
+      OTP: this.otpValue,
+      ACID: this.authConfigId,
+      CC: this.clientCode
+    });
+
+    this.authService.validateOTP(requestBody).subscribe({
+      next: (data: any) => {
+        if (data && data.Status && data.Result) {
+          // Display the actual API success message
+          if (data.Message) {
+            this.alertService.showSuccess(data.Message);
+          }
+
+          this.currentStep = ForgotPasswordStep.RESET_PASSWORD;
+        } else {
+          // Display the actual API failure message
+          this.alertService.showError(
+            data?.Message || 'Invalid OTP. Please try again.'
+          );
+        }
+
+        this.isVerifyOtpLoading = false;
+      },
+      error: (error: any) => {
+        this.alertService.showError(
+          this.getApiErrorMessage(
+            error,
+            'OTP verification failed. Please try again.'
+          )
+        );
+
+        this.isVerifyOtpLoading = false;
+      }
+    });
+  }
 }

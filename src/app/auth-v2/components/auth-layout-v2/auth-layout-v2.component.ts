@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
+import { environment } from '../../../../environment/environment';
 
 @Component({
   selector: 'auth-auth-layout-v2',
@@ -12,20 +13,27 @@ import { filter, takeUntil } from 'rxjs/operators';
   styleUrls: ['./auth-layout-v2.component.scss']
 })
 export class AuthLayoutV2Component implements OnInit, OnDestroy {
-
   showStoreBadges = false;
+
+  googlePlayUrl = '';
+  appStoreUrl = '';
 
   private destroy$ = new Subject<void>();
 
   constructor(private router: Router) {}
+
   get isForgotPasswordPage(): boolean {
-  return (
-    this.router.url.includes('/forgot-password') ||
-    this.router.url.includes('/reset-password') ||
-    this.router.url.includes('/sso-login')
-  );
-}
+    return (
+      this.router.url.includes('/forgot-password') ||
+      this.router.url.includes('/reset-password') ||
+      this.router.url.includes('/sso-login')
+    );
+  }
+
   ngOnInit(): void {
+    this.googlePlayUrl = environment.environment?.GooglePlayUrl || '';
+    this.appStoreUrl = environment.environment?.AppStoreUrl || '';
+
     this.updateStoreBadgeVisibility();
 
     this.router.events
@@ -50,5 +58,4 @@ export class AuthLayoutV2Component implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }

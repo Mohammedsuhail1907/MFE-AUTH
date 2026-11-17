@@ -1,0 +1,20 @@
+
+/**
+ * Diagnostic error codes for runtime application issues.
+ * These constants identify errors for application logging.
+ */
+export const DIAGNOSTIC_ERROR_CODES = {
+  UNKNOWN_ERROR: 'DIAG-001',
+  API_REQUEST_FAILED: 'DIAG-002',
+  SERVICE_INITIALIZATION_FAILED: 'DIAG-003',
+  AUTH_CONFIG_LOAD_FAILED: 'DIAG-004',
+  AUTHENTICATION_FAILED: 'DIAG-005',
+  SESSION_STORAGE_FAILED: 'DIAG-006',
+  OTP_REQUEST_FAILED: 'DIAG-007',
+  OTP_VALIDATION_FAILED: 'DIAG-008',
+  ROUTE_NAVIGATION_FAILED: 'DIAG-009',
+  ENVIRONMENT_CONFIG_FAILED: 'DIAG-010'
+} as const;
+
+export type DiagnosticErrorCode =
+  typeof DIAGNOSTIC_ERROR_CODES[keyof typeof DIAGNOSTIC_ERROR_CODES];

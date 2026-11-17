@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./reset-password-v2.component.scss']
 })
 export class ResetPasswordV2Component {
-
   newPassword = '';
   confirmPassword = '';
 
@@ -71,7 +70,5 @@ export class ResetPasswordV2Component {
       this.submitError = 'Passwords do not match.';
       return;
     }
-
   }
-
 }

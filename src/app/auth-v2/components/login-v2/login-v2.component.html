@@ -1,10 +1,7 @@
 
 <div class="auth-container d-flex align-items-center justify-content-center">
-
   <div class="card border-0 auth-card">
-
     <div class="card-body">
-
       <!-- Client logo -->
       <div class="hfactor-client-logo">
         <img
@@ -16,7 +13,6 @@
 
       <!-- Login form -->
       <div class="login-content">
-
         <div class="login-heading">
           <h4>Welcome !</h4>
           <p>Sign in to continue.</p>
@@ -27,16 +23,13 @@
           (ngSubmit)="login()"
           novalidate
         >
-
           <!-- Username -->
           <div class="mb-3">
-
-            <label for="username" class="form-label">
-              Username <span class="text-danger">*</span>
+            <label for="username" class="auth-v2-label">
+              Username <span class="auth-v2-required">*</span>
             </label>
 
             <div class="p-fluid position-relative">
-
               <input
                 id="username"
                 pInputText
@@ -45,6 +38,7 @@
                 name="username"
                 placeholder="Enter Username"
                 autocomplete="username"
+                class="auth-v2-input auth-v2-input--login"
                 [ngClass]="{
                   'ng-invalid ng-dirty':
                     loginForm.get('username')?.invalid &&
@@ -61,11 +55,10 @@
                    loginForm.get('username')?.touched)
                 "
               ></i>
-
             </div>
 
             <small
-              class="text-danger d-block text-start mt-1"
+              class="auth-v2-field-error"
               *ngIf="
                 loginForm.get('username')?.hasError('required') &&
                 (loginForm.get('username')?.dirty ||
@@ -74,18 +67,15 @@
             >
               Required
             </small>
-
           </div>
 
           <!-- Password -->
           <div class="mb-2">
-
-            <label for="password" class="form-label">
-              Password <span class="text-danger">*</span>
+            <label for="password" class="auth-v2-label">
+              Password <span class="auth-v2-required">*</span>
             </label>
 
             <div class="p-fluid position-relative">
-
               <p-password
                 [feedback]="false"
                 formControlName="password"
@@ -93,28 +83,26 @@
                 [toggleMask]="true"
                 placeholder="Enter your password"
                 autocomplete="current-password"
-                styleClass="w-100"
-                [inputStyleClass]="'w-100' + (
+                styleClass="w-100 auth-v2-password"
+                [inputStyleClass]="'auth-v2-input auth-v2-input--login w-100' + (
                   loginForm.get('password')?.invalid &&
                   (loginForm.get('password')?.dirty ||
                    loginForm.get('password')?.touched)
                     ? ' ng-invalid ng-dirty' : ''
                 )"
               ></p-password>
-
             </div>
 
             <small
-                class="text-danger d-block text-start mt-1"
-                *ngIf="
-                    loginForm.get('password')?.hasError('required') &&
-                    (loginForm.get('password')?.dirty ||
-                    loginForm.get('password')?.touched)
-                "
-                >
-                {{ VALIDATION_MESSAGES.PASSWORD_REQUIRED }}
+              class="auth-v2-field-error"
+              *ngIf="
+                loginForm.get('password')?.hasError('required') &&
+                (loginForm.get('password')?.dirty ||
+                 loginForm.get('password')?.touched)
+              "
+            >
+              {{ VALIDATION_MESSAGES.PASSWORD_REQUIRED }}
             </small>
-
           </div>
 
           <!-- Forgot password -->
@@ -122,7 +110,7 @@
             <a
               href="javascript:void(0)"
               (click)="goToForgotPassword()"
-              class="link-primary"
+              class="auth-v2-link"
             >
               <small>{{ UI_LABELS.FORGOT_PASSWORD }}</small>
             </a>
@@ -131,7 +119,7 @@
           <!-- Server error -->
           <div
             *ngIf="serverError; else loginButton"
-            class="server-error-banner d-flex align-items-start gap-2 w-100 p-2 rounded"
+            class="auth-v2-server-error d-flex align-items-start gap-2 w-100 p-2 rounded"
           >
             <i class="pi pi-shield mt-1 flex-shrink-0"></i>
             <span>{{ serverError }}</span>
@@ -139,60 +127,49 @@
 
           <!-- Login button -->
           <ng-template #loginButton>
-
             <button
               type="submit"
               [disabled]="isLoginLoading || isInitialLoading"
-              class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2"
+              class="auth-v2-primary-button auth-v2-primary-button--login w-100 gap-2"
             >
-
               <ng-container *ngIf="isInitialLoading">
                 <i class="pi pi-spin pi-spinner"></i>
                 <span>{{ UI_LABELS.BTN_PLEASE_WAIT }}</span>
               </ng-container>
 
-              <ng-container
-                *ngIf="!isInitialLoading && isLoginLoading"
-              >
+              <ng-container *ngIf="!isInitialLoading && isLoginLoading">
                 <i class="pi pi-spin pi-spinner"></i>
                 <span>{{ UI_LABELS.BTN_LOGGING_IN }}</span>
               </ng-container>
 
-              <span
-                *ngIf="!isInitialLoading && !isLoginLoading"
-              >
+              <span *ngIf="!isInitialLoading && !isLoginLoading">
                 {{ UI_LABELS.BTN_LOGIN }}
               </span>
-
             </button>
-
           </ng-template>
-
         </form>
 
         <!-- Single sign-on -->
-        <div class="login-divider">
-          <span></span>
-          <small>or</small>
-          <span></span>
-        </div>
+        <ng-container *ngIf="isSsoEnabled">
+          <div class="login-divider">
+            <span></span>
+            <small>or</small>
+            <span></span>
+          </div>
 
-        <button
-          type="button"
-          class="sso-button"
-          (click)="goToSsoLogin()"
-        >
-          Continue with single sign-on
-        </button>
+          <button
+            type="button"
+            class="sso-button"
+            (click)="goToSsoLogin()"
+          >
+            Continue with single sign-on
+          </button>
+        </ng-container>
 
         <p class="admin-message text-center">
           Need access? Contact your administrator.
         </p>
-
       </div>
-
     </div>
-
   </div>
-
 </div>

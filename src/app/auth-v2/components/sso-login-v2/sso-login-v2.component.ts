@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./sso-login-v2.component.scss']
 })
 export class SsoLoginV2Component {
-
   onSubmit(event: Event): void {
     event.preventDefault();
 
@@ -19,5 +18,4 @@ export class SsoLoginV2Component {
       return;
     }
   }
-
 }

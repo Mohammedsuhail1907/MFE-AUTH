@@ -1,0 +1,212 @@
+.auth-v2-layout {
+  color: #1F2225;
+  font-family: 'Montserrat', sans-serif;
+
+  /* FORM LABELS */
+  .auth-v2-label,
+  .form-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #1C1C1C;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  /* REQUIRED FIELD INDICATOR */
+  .auth-v2-required {
+    color: #D61C2A;
+  }
+
+  /* COMMON INPUT BASE STYLES */
+  .auth-v2-input,
+  .auth-v2-input.p-inputtext,
+  .auth-v2-input .p-password-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    background: #FFFFFF;
+    color: #1F2225;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    box-shadow: none;
+  }
+
+  /* LOGIN INPUT DIMENSIONS */
+  .auth-v2-input--login,
+  .auth-v2-input--login.p-inputtext,
+  .auth-v2-input--login .p-password-input {
+    height: 38px;
+    min-height: 38px;
+    padding: 11px 12px 11px 16px;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    line-height: 16px;
+  }
+
+  /* FORGOT PASSWORD INPUT DIMENSIONS */
+  .auth-v2-input--forgot {
+    height: 44px;
+    min-height: 44px;
+    padding: 11px 12px;
+    border: 1px solid #D6D6D6;
+    border-radius: 6px;
+    line-height: 20px;
+  }
+
+  /* INPUT PLACEHOLDERS */
+  .auth-v2-input::placeholder,
+  .auth-v2-input.p-inputtext::placeholder,
+  .auth-v2-input .p-password-input::placeholder {
+    color: #A0A0A0;
+    opacity: 1;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* INPUT FOCUS */
+  .auth-v2-input:focus,
+  .auth-v2-input.p-inputtext:enabled:focus,
+  .auth-v2-input .p-password-input:enabled:focus {
+    border-color: #130F40;
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* INVALID INPUTS */
+  .auth-v2-input.ng-invalid.ng-dirty,
+  .auth-v2-input.p-inputtext.ng-invalid.ng-dirty,
+  .auth-v2-input .p-password-input.ng-invalid.ng-dirty {
+    border-color: #D61C2A;
+  }
+
+  /* PASSWORD COMPONENT WIDTH */
+  .auth-v2-password,
+  .auth-v2-password .p-password,
+  .auth-v2-password .p-password-input {
+    width: 100%;
+  }
+
+  /* COMMON PRIMARY BUTTON BASE STYLES */
+  .auth-v2-primary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #130F40;
+    background: #130F40;
+    color: #FFFFFF;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: none;
+  }
+
+  /* LOGIN BUTTON DIMENSIONS */
+  .auth-v2-primary-button--login {
+    height: 32px;
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  /* FORGOT PASSWORD BUTTON DIMENSIONS */
+  .auth-v2-primary-button--forgot {
+    height: 36px;
+    min-height: 36px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  /* PRIMARY BUTTON HOVER */
+  .auth-v2-primary-button:hover:not(:disabled) {
+    border-color: #252052;
+    background: #252052;
+  }
+
+  /* DISABLED PRIMARY BUTTON */
+  .auth-v2-primary-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* VALIDATION ERROR MESSAGES */
+  .auth-v2-field-error {
+    display: block;
+    margin-top: 4px;
+    color: #D61C2A;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  /* PRIMENG ERROR MESSAGES */
+  .p-error {
+    color: #D61C2A;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  /* SERVER ERROR MESSAGES */
+  .auth-v2-server-error {
+    border: 1px solid #F5C6CB;
+    border-radius: 5px;
+    background: #FFF4F4;
+    color: #7A1E1E;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .auth-v2-server-error i {
+    color: #C0392B;
+  }
+
+  /* COMMON LINKS */
+  .auth-v2-link {
+    color: #1560D6;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .auth-v2-link:hover {
+    text-decoration: underline;
+  }
+
+  /* COMMON BACK TO LOGIN LINK */
+  .back-to-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 34px;
+    color: #565656;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: none;
+    cursor: pointer;
+
+    i {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #565656;
+      line-height: 1;
+    }
+
+    &:hover {
+      color: #191340;
+    }
+  }
+}

@@ -51,21 +51,19 @@ import {
   styleUrls: ['./login-v2.component.scss']
 })
 export class LoginV2Component implements OnInit, OnDestroy {
-
   private destroy$ = new Subject<void>();
 
   loginForm!: FormGroup;
-
   loginModel: LoginModel = {} as LoginModel;
-
   loginResponse!: LoginResponses;
-
   _authenticationConfiguration!: AuthenticationConfiguration;
 
   clientCode = '';
   authKey = '';
-
   logoSrc = '/assets/images/hfactor-logo.png';
+
+  googlePlayUrl = '';
+  appStoreUrl = '';
 
   isLoginLoading = false;
   isInitialLoading = false;
@@ -77,6 +75,10 @@ export class LoginV2Component implements OnInit, OnDestroy {
   readonly VALIDATION_MESSAGES = VALIDATION_MESSAGES;
   readonly UI_LABELS = UI_LABELS;
 
+  get isSsoEnabled(): boolean {
+    return Number(this._authenticationConfiguration?.AuthType) === 2;
+  }
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -87,6 +89,8 @@ export class LoginV2Component implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.googlePlayUrl = environment.environment?.GooglePlayUrl || '';
+    this.appStoreUrl = environment.environment?.AppStoreUrl || '';
 
     this.createLoginForm();
 
@@ -96,7 +100,6 @@ export class LoginV2Component implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((clientCode: string | null) => {
-
         this.clientCode = clientCode
           ? clientCode
           : (environment.environment.urlCode || '');
@@ -106,14 +109,11 @@ export class LoginV2Component implements OnInit, OnDestroy {
         this.serverError = null;
         this.isInitialLoading = true;
 
-        this.initial_api_request().subscribe({
-
+        this.initialApiRequest().subscribe({
           next: () => {
             this.isInitialLoading = false;
           },
-
           error: (error) => {
-
             this.isInitialLoading = false;
 
             const status = error && error.status;
@@ -127,7 +127,6 @@ export class LoginV2Component implements OnInit, OnDestroy {
             }
           }
         });
-
       });
   }
 
@@ -137,7 +136,6 @@ export class LoginV2Component implements OnInit, OnDestroy {
   }
 
   private updateLogoSrc(): void {
-
     const code = this.clientCode || environment.environment.urlCode || '';
 
     this.logoSrc = code
@@ -149,15 +147,14 @@ export class LoginV2Component implements OnInit, OnDestroy {
     this.logoSrc = '/assets/images/hfactor-logo.png';
   }
 
- createLoginForm(): void {
-  this.loginForm = this.fb.group({
-    username: [null, [Validators.required]],
-    password: [null, [Validators.required]]
-  });
-}
+  createLoginForm(): void {
+    this.loginForm = this.fb.group({
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]]
+    });
+  }
 
-  initial_api_request() {
-
+  initialApiRequest() {
     const requestParams =
       `urlCode=${environment.environment.urlCode}&authKey=${this.authKey}`;
 
@@ -166,7 +163,6 @@ export class LoginV2Component implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.destroy$),
         map((data: any) => {
-
           const response = JSON.parse(data.Result);
 
           this._authenticationConfiguration = response;
@@ -177,21 +173,17 @@ export class LoginV2Component implements OnInit, OnDestroy {
   }
 
   login(): void {
-
     if (this.isLoginLoading) {
       return;
     }
 
     if (this.loginForm.invalid) {
-
       Object.keys(this.loginForm.controls).forEach(key => {
-
         const control = this.loginForm.get(key);
 
         if (control) {
           control.markAsTouched();
         }
-
       });
 
       return;
@@ -203,17 +195,13 @@ export class LoginV2Component implements OnInit, OnDestroy {
     sessionStorage.clear();
 
     if (!this._authenticationConfiguration) {
-
-      this.initial_api_request().subscribe({
-
+      this.initialApiRequest().subscribe({
         next: () => {
           this.performLogin();
         },
-
         error: () => {
           this.isLoginLoading = false;
         }
-
       });
 
       return;
@@ -223,7 +211,6 @@ export class LoginV2Component implements OnInit, OnDestroy {
   }
 
   performLogin(): void {
-
     this.loginModel.AuthConfiguration =
       this._authenticationConfiguration;
 
@@ -263,7 +250,6 @@ export class LoginV2Component implements OnInit, OnDestroy {
       getNetworkDetails().catch(() => _NetworkDetails)
     ])
       .then(([device, location, network]) => {
-
         this.loginModel.Device = device as DeviceDetails;
         this.loginModel.Location = location as GeoLocation;
         this.loginModel.Network = network as NetworkDetails;
@@ -274,28 +260,22 @@ export class LoginV2Component implements OnInit, OnDestroy {
           .login(credential)
           .pipe(takeUntil(this.destroy$))
           .subscribe({
-
             next: (data: ApiResult) => {
-
               if (data.Result && data.Status) {
-
                 this.loginResponse = data.Result;
 
                 try {
-                  this.Session_Subscription(this.loginResponse);
+                  this.handleSession(this.loginResponse);
                 } catch (exception) {
                   console.log('Exception Error: ', exception);
                 }
-
               } else {
-                this.alertService.showError(data.Message);
+                this.serverError = data.Message;
               }
 
               this.isLoginLoading = false;
             },
-
             error: (err) => {
-
               console.log('Something is wrong! :', err);
 
               this.isLoginLoading = false;
@@ -304,22 +284,18 @@ export class LoginV2Component implements OnInit, OnDestroy {
                 this.serverError = SERVER_ERRORS.SERVER_ERROR;
               }
             }
-
           });
-
       })
       .catch(() => {
         this.isLoginLoading = false;
       });
   }
 
-  Session_Subscription(result: LoginResponses): void {
-
+  handleSession(result: LoginResponses): void {
     sessionStorage.setItem('username', this.loginModel.UserName);
     sessionStorage.setItem('clientCode', this.clientCode);
 
     if (result.UserDetails && result.UserDetails.IsMFAEnabledForWeb) {
-
       this.sessionService.setSesstionStorage(
         SessionKeys.Token,
         result.Token
@@ -350,25 +326,21 @@ export class LoginV2Component implements OnInit, OnDestroy {
     navigateToUrl('#/app-nav');
   }
 
-  
-goToForgotPassword(): void {
-  this.router.navigate(['../forgot-password'], {
-    relativeTo: this.route,
-    queryParams: {
-      companyId: this._authenticationConfiguration.CompanyId,
-      userType: this._authenticationConfiguration.UserType,
-      clientCode: this.clientCode,
-      authConfigId: this._authenticationConfiguration.Id
-    }
-  });
-}
-
+  goToForgotPassword(): void {
+    this.router.navigate(['../forgot-password'], {
+      relativeTo: this.route,
+      queryParams: {
+        companyId: this._authenticationConfiguration.CompanyId,
+        userType: this._authenticationConfiguration.UserType,
+        clientCode: this.clientCode,
+        authConfigId: this._authenticationConfiguration.Id
+      }
+    });
+  }
 
   goToSsoLogin(): void {
-
     this.router.navigate(['../sso-login'], {
       relativeTo: this.route
     });
   }
-
 }

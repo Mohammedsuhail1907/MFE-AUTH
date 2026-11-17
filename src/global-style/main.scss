@@ -6,8 +6,6 @@
 @import 'primeicons/primeicons.css';
 @layer bootstrap, primeng, custom;
 
-
-
 @layer primeng {
     @import 'custom-primeng';
 }
@@ -24,6 +22,7 @@
     @import 'buttons';
     @import 'utilities';
     @import 'theme';
+    @import 'auth-v2';
 
     body {
         background-color: var(--background);
@@ -171,7 +170,6 @@
     }
 
     // Header Style Ends
-
 
 }
 

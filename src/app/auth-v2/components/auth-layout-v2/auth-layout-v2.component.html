@@ -1,9 +1,7 @@
 
 <div class="auth-v2-layout">
-
   <!-- Left branding panel -->
   <section class="auth-v2-brand-panel">
-
     <div class="brand-background"></div>
     <div class="brand-overlay"></div>
 
@@ -17,7 +15,6 @@
 
     <!-- Branding content -->
     <div class="brand-content">
-
       <div class="brand-message">
         <h1>
           Every part of<br />
@@ -51,21 +48,18 @@
           alt="CIEL HR Group partners"
         />
       </div>
-
     </div>
-
   </section>
 
   <!-- Right content panel -->
   <section class="auth-v2-content-panel">
-
     <div
-  class="auth-v2-language"
-  [class.hide-language]="isForgotPasswordPage"
->
-        <i class="pi pi-globe language-icon"></i>
-        <span>English</span>
-        <i class="pi pi-chevron-down language-arrow"></i>
+      class="auth-v2-language"
+      [class.hide-language]="isForgotPasswordPage"
+    >
+      <i class="pi pi-globe language-icon"></i>
+      <span>English</span>
+      <i class="pi pi-chevron-down language-arrow"></i>
     </div>
 
     <div class="auth-v2-page-content">
@@ -74,19 +68,31 @@
 
     <!-- App download badges: login screen only -->
     <div class="auth-v2-store-badges" *ngIf="showStoreBadges">
+      <a
+        *ngIf="googlePlayUrl"
+        [href]="googlePlayUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Get it on Google Play"
+      >
+        <img
+          src="assets/images/google-play-ico.svg"
+          alt="Get it on Google Play"
+        />
+      </a>
 
-      <img
-        src="assets/images/google-play-ico.svg"
-        alt="Get it on Google Play"
-      />
-
-      <img
-        src="assets/images/app-store-ico.svg"
-        alt="Download on the App Store"
-      />
-
+      <a
+        *ngIf="appStoreUrl"
+        [href]="appStoreUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Download on the App Store"
+      >
+        <img
+          src="assets/images/app-store-ico.svg"
+          alt="Download on the App Store"
+        />
+      </a>
     </div>
-
   </section>
-
 </div>
