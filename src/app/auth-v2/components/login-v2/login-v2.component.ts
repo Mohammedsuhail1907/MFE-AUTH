@@ -76,7 +76,7 @@ export class LoginV2Component implements OnInit, OnDestroy {
   readonly UI_LABELS = UI_LABELS;
 
   get isSsoEnabled(): boolean {
-    return Number(this._authenticationConfiguration?.AuthType) === 2;
+    return Number(this._authenticationConfiguration?.AuthType) === 0;
   }
 
   constructor(

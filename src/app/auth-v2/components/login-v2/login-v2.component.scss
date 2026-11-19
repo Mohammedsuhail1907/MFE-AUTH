@@ -34,7 +34,8 @@
   width: 400px;
   min-width: 0;
   max-width: 400px;
-  min-height: 556.84px;
+  height: auto;
+  min-height: 562px;
   margin: 0 auto;
   padding: 0;
   transform: none;
@@ -46,9 +47,11 @@
 
 /* CARD BODY */
 .auth-card .card-body {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   width: 100%;
-  min-height: 556.84px;
+  min-height: 562px;
   padding: 0;
   box-sizing: border-box;
 }
@@ -61,7 +64,7 @@
   width: 180px;
   height: 64px;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   border: none;
   background: #FFFFFF;
 }
@@ -238,38 +241,44 @@
 /* RESPONSIVE STYLES */
 @media (max-width: 767px) {
   .auth-container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100% !important;
-    max-width: 400px !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-  }
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: center;
+  width: 400px !important;
+  max-width: 400px !important;
+  min-width: 400px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
 
-  .auth-card {
-    display: block;
-    width: 100% !important;
-    max-width: 400px !important;
-    min-width: 0 !important;
-    min-height: 556.84px;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    transform: none !important;
-  }
+.auth-card {
+  display: block !important;
+  width: 400px !important;
+  max-width: 400px !important;
+  min-width: 400px !important;
+  height: 562px !important;
+  min-height: 562px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+}
 
-  .auth-card .card-body {
-    display: block !important;
-    width: 100% !important;
-    min-height: 556.84px;
-    padding: 0 !important;
-    box-sizing: border-box;
-  }
+.auth-card .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  width: 400px !important;
+  min-width: 400px !important;
+  height: 562px !important;
+  min-height: 562px !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
 
   .hfactor-client-logo {
     width: 220px !important;
     max-width: 100% !important;
-    margin-bottom: 18px !important;
+    margin-bottom: 0 !important;
   }
 
   .login-content,

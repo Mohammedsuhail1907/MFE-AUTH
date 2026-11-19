@@ -4,8 +4,11 @@
   display: block;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* BOX SIZING */
@@ -21,25 +24,26 @@
   display: flex;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* LEFT BRANDING PANEL */
 .auth-v2-brand-panel {
   position: relative;
   display: flex;
-  flex: 0 0 54.1667%;
+  flex: 0 0 50%;
   flex-direction: column;
   justify-content: space-between;
-  width: 54.1667%;
-  max-width: 54.1667%;
+  width: 50%;
+  max-width: 780px;
   min-width: 0;
-  height: 100vh;
-  min-height: 100vh;
   padding: 32px 8%;
   overflow: hidden;
   color: #ffffff;
@@ -109,6 +113,7 @@
   height: 80px;
   margin: 0 0 12px;
   color: #ffffff;
+  font-family: "Montserrat", sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 40px;
@@ -122,6 +127,7 @@
   height: 48px;
   margin: 0;
   color: rgba(255, 255, 255, 0.72);
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -151,6 +157,7 @@
   width: fit-content;
   height: 16px;
   color: #ffffff;
+  font-family: "Montserrat", sans-serif;
   font-size: 11px;
   font-weight: 500;
   line-height: 16px;
@@ -185,6 +192,7 @@
   width: 184px;
   height: 16px;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 500;
   line-height: 16px;
@@ -210,15 +218,15 @@
 .auth-v2-content-panel {
   position: relative;
   display: flex;
-  flex: 0 0 45.8333%;
+  flex: 0 0 50%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 45.8333%;
-  max-width: 45.8333%;
+  width: 50%;
+  max-width: 50%;
   min-width: 0;
   height: 100vh;
-  min-height: 100vh;
+  min-height: 0;
   padding: 48px 72px 40px;
   overflow: hidden;
   background: #ffffff;
@@ -241,6 +249,7 @@
   border-radius: 7px;
   background: #FFFFFF;
   color: #1F2225;
+  font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;
@@ -264,7 +273,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 75%;
   max-width: 400px;
   min-width: 0;
   margin: 0 auto;
@@ -274,13 +283,13 @@
 /* APP STORE AND GOOGLE PLAY BADGES */
 .auth-v2-store-badges {
   position: absolute;
-  bottom: 5px;
+  bottom: 72px;
   left: 50%;
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 18px;    
   width: 100%;
   margin: 0;
   padding: 0;
@@ -315,11 +324,11 @@
 
   .auth-v2-layout {
     display: block !important;
-    width: none;
+    width: 100%;
     height: auto !important;
     min-height: 100vh !important;
     overflow: visible !important;
-  }
+    }
 
   .auth-v2-brand-panel {
     display: none !important;
@@ -371,6 +380,12 @@
   display: none !important;
 }
 
+/* AUTH V2 FONT FAMILY */
+.auth-v2-layout,
+.auth-v2-layout *:not(.pi):not(.pi::before):not(.pi::after) {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 /* BRAND TYPOGRAPHY */
 .brand-message h1 {
   font-weight: 700;
@@ -382,6 +397,8 @@
 
 /* AUTH V2 TYPOGRAPHY */
 .auth-v2-layout {
+  font-family: 'Montserrat', sans-serif;
+
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
   }
