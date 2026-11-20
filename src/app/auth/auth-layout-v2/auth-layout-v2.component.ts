@@ -4,7 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { environment } from '../../../../environment/environment';
+import { environment } from '../../../environment/environment';
 
 @Component({
   selector: 'auth-auth-layout-v2',

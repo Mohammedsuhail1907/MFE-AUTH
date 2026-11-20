@@ -1,7 +1,7 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { navigateToUrl } from 'single-spa';
 import { environment } from '../../../environment/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, throwError } from 'rxjs';
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -62,12 +62,13 @@ export class AuthComponent implements OnInit {
   serverError: string | null = null;
 
   constructor(
-    private acr: ActivatedRoute,
-    private authService: AuthenticationService,
-    private fb: FormBuilder,
-    private alertService: AlertService,
-    private sessionService: SessionStorageService
-  ) { }
+  private acr: ActivatedRoute,
+  private router: Router,
+  private authService: AuthenticationService,
+  private fb: FormBuilder,
+  private alertService: AlertService,
+  private sessionService: SessionStorageService
+) { }
 
   ngOnInit(): void {
     this.urlCode = environment.environment.urlCode || '';
@@ -127,13 +128,37 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  showForgotPasswordFlow() {
-    this.showForgotPassword = true;
-  }
+  showForgotPasswordFlow(): void {
+  this.router.navigate(
+    ['/app-auth/auth/forgot-password'],
+    {
+      queryParams: {
+        companyId: this._authenticationConfiguration?.CompanyId,
+        userType: this._authenticationConfiguration?.UserType,
+        clientCode: this.clientCode || '',
+        authConfigId: this._authenticationConfiguration?.Id
+      }
+    }
+  );
+}
 
   hideForgotPasswordFlow() {
     this.showForgotPassword = false;
   }
+
+  openSsoLogin(): void {
+  this.router.navigate(
+    ['/app-auth/auth/sso-login'],
+    {
+      queryParams: {
+        companyId: this._authenticationConfiguration?.CompanyId,
+        userType: this._authenticationConfiguration?.UserType,
+        clientCode: this.clientCode || '',
+        authConfigId: this._authenticationConfiguration?.Id
+      }
+    }
+  );
+}
 
   initial_api_request() {
     const requestParams = `urlCode=${environment.environment.urlCode}&authKey=${this.authKey}`;

@@ -60,7 +60,7 @@
             </span>
         </div>
 
-        <div class="auth-container d-flex align-items-center justify-content-center">
+        <div class="auth-container d-flex flex-column align-items-center justify-content-center">
 
             <div class="card border-0 auth-card">
 
@@ -251,7 +251,7 @@
                             <span></span>
                         </div>
 
-                        <div class="sso-button">
+                        <div class="sso-button" role="button" tabindex="0" (click)="openSsoLogin()" (keydown.enter)="openSsoLogin()">
                             Continue with single sign-on
                         </div>
 
@@ -259,31 +259,7 @@
                             Need access? Contact your administrator.
                         </p>
 
-                        <!-- App download links -->
-                        <div class="text-center store-section">
-                            <div class="d-flex justify-content-center store-badges">
-                                <a
-                                    class="me-2"
-                                    href="javascript:void(0)"
-                                    (click)="openStore(googlePlayUrl)"
-                                >
-                                    <img
-                                        [src]="'/images/google-play-ico.svg' | assetUrl"
-                                        alt="Google Play"
-                                    />
-                                </a>
-
-                                <a
-                                    href="javascript:void(0)"
-                                    (click)="openStore(appStoreUrl)"
-                                >
-                                    <img
-                                        [src]="'/images/app-store-ico.svg' | assetUrl"
-                                        alt="App Store"
-                                    />
-                                </a>
-                            </div>
-                        </div>
+                       
 
                     </div>
 
@@ -304,6 +280,31 @@
 
             </div>
 
+             <!-- App download links -->
+                <div class="text-center store-section">
+                    <div class="d-flex justify-content-center store-badges">
+                        <a
+                            class="me-2"
+                            href="javascript:void(0)"
+                            (click)="openStore(googlePlayUrl)"
+                        >
+                            <img
+                                [src]="'/images/google-play-ico.svg' | assetUrl"
+                                alt="Google Play"
+                            />
+                        </a>
+
+                        <a
+                            href="javascript:void(0)"
+                            (click)="openStore(appStoreUrl)"
+                        >
+                            <img
+                                [src]="'/images/app-store-ico.svg' | assetUrl"
+                                alt="App Store"
+                            />
+                        </a>
+                    </div>
+                </div>
         </div>
 
     </div>

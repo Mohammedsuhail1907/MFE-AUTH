@@ -16,24 +16,31 @@ import { provideHttpClient } from '@angular/common/http';
 import { CandidateOtpComponent } from './candidate-otp/candidate-otp.component';
 import { CommonOtpAuthenticationModule } from './otp-input-component/common-otp-auth.module';
 import { CandidateUnauthorizedComponent } from './candidate-unauthorized/candidate-unauthorized.component';
+import { AuthLayoutV2Component } from './auth-layout-v2/auth-layout-v2.component';
+import { ResetPasswordV2Component } from './reset-password-v2/reset-password-v2.component';
+import { SsoLoginV2Component } from './sso-login-v2/sso-login-v2.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     ForgotPasswordComponent,
     CandidateOtpComponent,
-    CandidateUnauthorizedComponent
+    CandidateUnauthorizedComponent,
+
+    AuthLayoutV2Component,
+    ResetPasswordV2Component,
+    SsoLoginV2Component
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     InputTextModule,
     PasswordModule,
     InputOtpModule,
     NgxCaptchaModule,
     SharedModule,
-    ReactiveFormsModule,
     CommonOtpAuthenticationModule,
     ButtonModule,
     RippleModule
