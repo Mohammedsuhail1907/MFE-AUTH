@@ -8,7 +8,7 @@
 /* SSO LOGIN CONTENT */
 .sso-login-content {
   width: 100%;
-  max-width: 484px;
+  max-width: 400px;
   margin: 0 auto;
   color: #1F2225;
 }
@@ -22,18 +22,19 @@
   }
 }
 
-/* SSO HEADING */
-.sso-login-heading {
-  margin-bottom: 26px;
+    /* SSO HEADING */
+    .sso-login-heading {
+      margin-bottom: 26px;
 
-  h2 {
-    margin: 0;
-    color: #1F2225;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 30px;
-  }
-}
+      h2 {
+        margin: 0;
+        color: #1C1C1C;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+        letter-spacing: -0.01em;
+      }
+    }
 
 /* COMPANY CODE FIELD */
 .sso-login-field {
@@ -46,20 +47,29 @@
 /* COMPANY CODE INPUT */
 .sso-login-field .auth-v2-input {
   width: 100%;
-  height: 48px;
-  padding: 0 12px;
+  height: 44px;
+  min-height: 44px;
+  padding: 11px 12px;
   border: 1px solid #D6D6D6;
-  border-style: solid;
   border-radius: 6px;
   outline: none;
   box-sizing: border-box;
   background: #FFFFFF;
   color: #1F2225;
-  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
   font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
 
   &::placeholder {
-    color: #AAAAAA;
+    color: #A1A1A1;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    opacity: 1;
   }
 
   &:focus {
@@ -70,8 +80,10 @@
 
 /* CONTINUE WITH SSO BUTTON */
 .sso-login-content .continue-sso-button {
-  width: 100%;
-  height: 44px;
+  width: 400px;
+  max-width: 100%;
+  height: 36px;
+  min-height: 36px;
   padding: 0 16px;
   border-radius: 6px;
   font-size: 13px;
@@ -87,6 +99,10 @@
   }
 
   .sso-login-heading h2 {
-    font-size: 22px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: -0.01em;
+    color: #1C1C1C;
   }
 }

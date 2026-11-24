@@ -38,13 +38,13 @@
 .auth-v2-brand-panel {
   position: relative;
   display: flex;
-  flex: 0 0 50%;
+  flex: 0 0 54.1667%;
   flex-direction: column;
   justify-content: space-between;
-  width: 50%;
+  width: 54.1667%;
   max-width: 780px;
   min-width: 0;
-  padding: 32px 8%;
+  padding: 58px 64px 32px;
   overflow: hidden;
   color: #ffffff;
   background-color: #130F40;
@@ -103,7 +103,7 @@
 .brand-content {
   width: 100%;
   margin-top: auto;
-  margin-bottom: 24px;
+  margin-bottom: 27px;
 }
 
 /* BRAND HEADING */
@@ -139,7 +139,7 @@
   width: 652px;
   max-width: 100%;
   height: 1px;
-  margin: 28px 0;
+  margin: 20px 0;
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -183,8 +183,8 @@
 .partner-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 10px;
+  gap: 14px;
+  margin-top: 41px;
 }
 
 .partner-section > span:first-child {
@@ -218,11 +218,11 @@
 .auth-v2-content-panel {
   position: relative;
   display: flex;
-  flex: 0 0 50%;
+  flex: 0 0 45.8333%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 45.8333%;
   max-width: 50%;
   min-width: 0;
   height: 100vh;
@@ -273,7 +273,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 75%;
+  width: 100%;
   max-width: 400px;
   min-width: 0;
   margin: 0 auto;
@@ -386,14 +386,7 @@
   font-family: 'Montserrat', sans-serif !important;
 }
 
-/* BRAND TYPOGRAPHY */
-.brand-message h1 {
-  font-weight: 700;
-}
 
-.brand-message p {
-  font-weight: 400;
-}
 
 /* AUTH V2 TYPOGRAPHY */
 .auth-v2-layout {
@@ -410,4 +403,17 @@
   button {
     font-weight: 500;
   }
+}
+
+/* BRAND TYPOGRAPHY */
+.brand-message h1 {
+  font-weight: 700;
+}
+
+.brand-message p {
+  font-weight: 400;
+}
+
+.powered-by > span {
+  font-weight: 500;
 }
