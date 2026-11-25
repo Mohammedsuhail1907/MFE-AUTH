@@ -1,54 +1,123 @@
-
 /* COMPONENT HOST */
 :host {
   display: block;
   width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
 }
 
-/* SSO LOGIN CONTENT */
+/* SSO LOGIN CONTENT - FIGMA: 400PX WIDTH */
 .sso-login-content {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
   max-width: 400px;
   margin: 0 auto;
+  padding: 0;
   color: #1F2225;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
 }
 
-/* BACK TO LOGIN - SSO-SPECIFIC FONT SIZE */
+/* BACK TO LOGIN */
 .sso-login-content .back-to-login {
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  height: 20px;
+  margin: 0 0 48px;
+  padding: 0;
+  color: #565656;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-decoration: none;
+  cursor: pointer;
 
   i {
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 11.67px;
+    height: 11.67px;
+    flex: 0 0 11.67px;
+    color: #565656;
+    font-size: 11.67px;
+    line-height: 1;
+  }
+
+  span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+
+  &:hover {
+    color: #191340;
   }
 }
 
-    /* SSO HEADING */
-    .sso-login-heading {
-      margin-bottom: 26px;
+/* SSO HEADING - FIGMA: 400 X 32 */
+.sso-login-heading {
+  width: 400px;
+  max-width: 400px;
+  height: 32px;
+  margin: 0 0 6px;
+  padding: 0;
 
-      h2 {
-        margin: 0;
-        color: #1C1C1C;
-        font-size: 24px;
-        font-weight: 600;
-        line-height: 32px;
-        letter-spacing: -0.01em;
-      }
-    }
+  h2 {
+    width: 100%;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    color: #1C1C1C;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: -0.24px;
+  }
+}
 
-/* COMPANY CODE FIELD */
+/* COMPANY CODE FIELD - FIGMA: 400 X 66 */
 .sso-login-field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+  width: 400px;
+  height: 66px;
+  gap: 6px;
+  margin: 0 0 24px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* COMPANY CODE INPUT */
-.sso-login-field .auth-v2-input {
+/* COMPANY CODE LABEL - FIGMA: 12PX / 16PX */
+.sso-login-field .auth-v2-label {
+  display: block;
   width: 100%;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  color: #1C1C1C;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.12px;
+}
+
+/* COMPANY CODE INPUT - FIGMA: 400 X 44 */
+.sso-login-field .auth-v2-input {
+  display: block;
+  width: 400px;
   height: 44px;
   min-height: 44px;
+  margin: 0;
   padding: 11px 12px;
   border: 1px solid #D6D6D6;
   border-radius: 6px;
@@ -78,31 +147,46 @@
   }
 }
 
-/* CONTINUE WITH SSO BUTTON */
+/* CONTINUE WITH SSO BUTTON - FIGMA: 400 X 36 */
 .sso-login-content .continue-sso-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 400px;
-  max-width: 100%;
+  max-width: 400px;
   height: 36px;
   min-height: 36px;
-  padding: 0 16px;
+  margin: 0;
+  padding: 0 12px;
   border-radius: 6px;
-  font-size: 13px;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
   font-weight: 500;
   line-height: 20px;
+  letter-spacing: 0;
 }
 
 /* RESPONSIVE STYLES */
 @media (max-width: 767px) {
   .sso-login-content {
     width: 100%;
-    max-width: 484px;
+    max-width: 400px;
+  }
+
+  .sso-login-heading,
+  .sso-login-field,
+  .sso-login-field .auth-v2-input,
+  .sso-login-content .continue-sso-button {
+    width: 100%;
+    max-width: 100%;
   }
 
   .sso-login-heading h2 {
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.24px;
     color: #1C1C1C;
   }
 }

@@ -34,7 +34,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-/* LEFT BRANDING PANEL */
+/* =====================================================
+   LEFT BRANDING PANEL - SAME AS LOGIN SCREEN
+   ===================================================== */
+
 .auth-v2-brand-panel {
   position: relative;
   display: flex;
@@ -44,46 +47,37 @@
   width: 54.1667%;
   max-width: 780px;
   min-width: 0;
-  padding: 58px 64px 32px;
+  min-height: 100vh;
+  padding: 56px 64px 56px;
   overflow: hidden;
-  color: #ffffff;
-  background-color: #130F40;
-}
+  box-sizing: border-box;
+  color: #FFFFFF;
+  background-color: #003672;
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
 
-/* BRAND BACKGROUND */
-.brand-background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-/* BRAND OVERLAY */
-.brand-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    rgba(0, 22, 58, 0.78),
-    rgba(0, 22, 58, 0.78)
-  );
+  /* Scrim: normal | Photo tint: multiply | Photo: normal */
+  background-blend-mode: normal, normal, multiply;
 }
 
 /* BRAND CONTENT POSITIONING */
 .brand-logo,
 .brand-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* BRAND LOGO */
 .brand-logo {
+  position: absolute;
+  top: 56px;
+  left: 64px;
+  z-index: 3;
   display: flex;
   align-items: center;
-  width: 145px;
-  height: 40px;
+  width: 170px;
+  height: 46px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -102,7 +96,12 @@
 .brand-content {
   width: 100%;
   margin-top: auto;
-  margin-bottom: 27px;
+  margin-bottom: 0;
+}
+
+/* BRAND MESSAGE */
+.brand-message {
+  width: 100%;
 }
 
 /* BRAND HEADING */
@@ -143,49 +142,65 @@
 }
 
 /* POWERED BY SECTION */
-.powered-by {
+.auth-v2-brand-panel .powered-by {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding-top: 10px;
-  margin-bottom: 0;
+  justify-content: flex-start;
+  gap: 14px;
+  width: 100%;
+  height: 29.32px;
+  margin: 0;
+  padding: 0;
 }
 
-.powered-by > span {
+/* POWERED BY TEXT */
+.auth-v2-brand-panel .powered-by > span {
   display: inline-block;
+  flex: 0 0 auto;
   width: fit-content;
   height: 16px;
-  color: #ffffff;
-  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0.66px;
   opacity: 0.6;
+  white-space: nowrap;
 }
 
-.powered-by > img {
+/* CIEL LOGO */
+.auth-v2-brand-panel .powered-by > img {
   display: block;
+  flex: 0 0 102px;
   width: 102px;
   min-width: 102px;
   max-width: 102px;
   height: 29.32px;
   max-height: 29.32px;
+  margin: 0;
   padding: 0;
   border: 0;
-  background: transparent;
   object-fit: contain;
-  flex-shrink: 0;
+  object-position: left center;
+  background: transparent;
 }
 
 /* PARTNER LOGOS SECTION */
 .partner-section {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 41px;
+  width: 100%;
+  height: 60px;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 8px;
+  box-sizing: border-box;
 }
 
+/* PARTNER HEADING */
 .partner-section > span:first-child {
   display: block;
   width: 184px;
@@ -198,22 +213,26 @@
   letter-spacing: 0.66px;
   color: #FFFFFF;
   opacity: 0.6;
-  text-align: center;
+  text-align: left;
   white-space: nowrap;
 }
 
+/* PARTNER LOGOS IMAGE */
 .partner-section img {
   display: block;
   width: 100%;
-  max-width: 420px;
-  height: auto;
-  max-height: 17px;
+  max-width: 652px;
+  height: 20px;
+  max-height: 20px;
   object-fit: contain;
   object-position: left center;
   opacity: 0.85;
 }
 
-/* RIGHT LOGIN PANEL */
+/* =====================================================
+   RIGHT CONTENT PANEL - UNCHANGED
+   ===================================================== */
+
 .auth-v2-content-panel {
   position: relative;
   display: flex;
@@ -288,7 +307,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;    
+  gap: 18px;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -327,7 +346,7 @@
     height: auto !important;
     min-height: 100vh !important;
     overflow: visible !important;
-    }
+  }
 
   .auth-v2-brand-panel {
     display: none !important;
@@ -385,17 +404,25 @@
   font-family: 'Montserrat', sans-serif !important;
 }
 
-
-
 /* AUTH V2 TYPOGRAPHY */
 .auth-v2-layout {
   font-family: 'Montserrat', sans-serif;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 600;
   }
 
-  p, span, label, a, button, input {
+  p,
+  span,
+  label,
+  a,
+  button,
+  input {
     font-weight: 400;
   }
 

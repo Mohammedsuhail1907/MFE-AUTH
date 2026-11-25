@@ -1,12 +1,29 @@
-
 <div class="auth-v2-layout">
   <!-- Left branding panel -->
-  <section class="auth-v2-brand-panel">
+  <section
+  class="auth-v2-brand-panel"
+  [style.background-image]="
+    'linear-gradient(180deg, ' +
+    'rgba(0, 54, 114, 0.45) 0%, ' +
+    'rgba(0, 54, 114, 0) 22%, ' +
+    'rgba(0, 54, 114, 0) 52%, ' +
+    'rgba(0, 54, 114, 0.50) 72%, ' +
+    'rgba(0, 54, 114, 0.88) 100%), ' +
+    'linear-gradient(rgba(0, 54, 114, 0.45), rgba(0, 54, 114, 0.45)), ' +
+    'url(' + ('images/login-hero.png' | assetUrl) + ')'
+  "
+>
+
+    <!-- Background photograph -->
     <div
       class="brand-background"
       [style.background-image]="'url(' + ('images/login-hero.png' | assetUrl) + ')'"
     ></div>
 
+    <!-- Figma photograph tint: #003672 at 45%, Multiply -->
+    <div class="brand-tint"></div>
+
+    <!-- Figma SVG scrim gradient -->
     <div class="brand-overlay"></div>
 
     <!-- HFactor logo -->
