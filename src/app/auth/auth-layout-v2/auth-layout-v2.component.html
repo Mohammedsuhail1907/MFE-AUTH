@@ -2,13 +2,17 @@
 <div class="auth-v2-layout">
   <!-- Left branding panel -->
   <section class="auth-v2-brand-panel">
-    <div class="brand-background"></div>
+    <div
+      class="brand-background"
+      [style.background-image]="'url(' + ('images/login-hero.png' | assetUrl) + ')'"
+    ></div>
+
     <div class="brand-overlay"></div>
 
     <!-- HFactor logo -->
     <div class="brand-logo">
       <img
-        src="assets/images/hfactor_white.png"
+        [src]="'images/hfactor_white.png' | assetUrl"
         alt="Hfactor"
       />
     </div>
@@ -34,7 +38,7 @@
         <span>POWERED BY</span>
 
         <img
-          src="assets/images/ciel-logo-white.png"
+          [src]="'images/ciel-logo-white.png' | assetUrl"
           alt="CIEL"
         />
       </div>
@@ -44,7 +48,7 @@
         <span>PART OF THE CIEL HR GROUP</span>
 
         <img
-          src="assets/images/partner-logos.svg"
+          [src]="'images/partner-logos.svg' | assetUrl"
           alt="CIEL HR Group partners"
         />
       </div>
@@ -76,7 +80,7 @@
         aria-label="Get it on Google Play"
       >
         <img
-          src="assets/images/google-play-ico.svg"
+          [src]="'images/google-play-ico.svg' | assetUrl"
           alt="Get it on Google Play"
         />
       </a>
@@ -89,7 +93,7 @@
         aria-label="Download on the App Store"
       >
         <img
-          src="assets/images/app-store-ico.svg"
+          [src]="'images/app-store-ico.svg' | assetUrl"
           alt="Download on the App Store"
         />
       </a>
