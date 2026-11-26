@@ -57,12 +57,12 @@
     <div class="auth-right-panel">
 
         <div class="language-wrapper">
-            <span class="language-label">
-                <i class="pi pi-globe"></i>
-                <span>English</span>
-                <i class="pi pi-chevron-down"></i>
-            </span>
-        </div>
+        <span class="language-label" aria-label="Current language: English">
+            <i class="pi pi-globe" aria-hidden="true"></i>
+            <span>English</span>
+            <i class="pi pi-chevron-down"></i>
+        </span>
+    </div>
 
         <div class="auth-container d-flex flex-column align-items-center">
 
@@ -95,13 +95,11 @@
 
                             <!-- Username -->
                             <div class="mb-3">
-
                                 <label for="username" class="form-label">
                                     Username
                                 </label>
 
                                 <div class="p-fluid position-relative">
-
                                     <input
                                         id="username"
                                         pInputText
@@ -118,16 +116,6 @@
                                             loginForm.get('username')?.touched)
                                         }"
                                     />
-
-                                    <i
-                                        class="pi pi-exclamation-circle text-danger position-absolute top-50 end-0 translate-middle-y me-3"
-                                        *ngIf="
-                                            loginForm.get('username')?.invalid &&
-                                            (loginForm.get('username')?.dirty ||
-                                            loginForm.get('username')?.touched)
-                                        "
-                                    ></i>
-
                                 </div>
 
                                 <small
@@ -140,7 +128,6 @@
                                 >
                                     {{ VALIDATION_MESSAGES.USERNAME_REQUIRED }}
                                 </small>
-
                             </div>
 
                             <!-- Password -->
@@ -167,16 +154,6 @@
                                             ? ' ng-invalid ng-dirty' : ''
                                         )"
                                     ></p-password>
-
-                                    <i
-                                        class="pi pi-exclamation-circle text-danger position-absolute top-50 end-0 translate-middle-y me-3"
-                                        *ngIf="
-                                            loginForm.get('password')?.invalid &&
-                                            (loginForm.get('password')?.dirty ||
-                                            loginForm.get('password')?.touched)
-                                        "
-                                        style="z-index: 10;"
-                                    ></i>
 
                                 </div>
 
@@ -209,9 +186,8 @@
                             <!-- Server error -->
                             <div
                                 *ngIf="serverError; else loginButton"
-                                class="server-error-banner d-flex align-items-start gap-2 w-100 p-2 rounded"
+                                class="server-error-banner d-flex align-items-start w-100 p-2 rounded"
                             >
-                                <i class="pi pi-shield mt-1 flex-shrink-0"></i>
                                 <span>{{ serverError }}</span>
                             </div>
 
@@ -225,14 +201,12 @@
                                 >
 
                                     <ng-container *ngIf="isInitialLoading">
-                                        <i class="pi pi-spin pi-spinner"></i>
                                         <span>{{ UI_LABELS.BTN_PLEASE_WAIT }}</span>
                                     </ng-container>
 
                                     <ng-container
                                         *ngIf="!isInitialLoading && isLoginLoading"
                                     >
-                                        <i class="pi pi-spin pi-spinner"></i>
                                         <span>{{ UI_LABELS.BTN_LOGGING_IN }}</span>
                                     </ng-container>
 
