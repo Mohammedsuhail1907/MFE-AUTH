@@ -46,14 +46,14 @@
         background-blend-mode: normal, normal, multiply;
 
         .brand-logo {
-            width: 170px;
+            width: 169px;
             height: 46px;
             display: flex;
             align-items: center;
             gap: 12px;
 
             img {
-                width: 170px;
+                width: 169px;
                 height: 46px;
                 object-fit: contain;
             }
@@ -1177,4 +1177,24 @@
     max-width: 129.65px !important;
     height: 37.77px !important;
     object-fit: contain !important;
+}
+
+:host ::ng-deep .auth-wrap .p-password svg.p-icon {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+}
+
+:host ::ng-deep .auth-wrap .p-password [data-pc-section="showIcon"],
+:host ::ng-deep .auth-wrap .p-password [data-pc-section="hideIcon"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+:host ::ng-deep .auth-wrap .auth-right-panel .auth-container .auth-card h4 {
+  width: 129px !important;
+  max-width: 129px !important;
+  box-sizing: border-box;
 }
