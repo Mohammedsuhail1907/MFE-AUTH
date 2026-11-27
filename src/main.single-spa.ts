@@ -18,6 +18,26 @@ declare const __webpack_public_path__: string;
 const rawPublic = typeof __webpack_public_path__ !== 'undefined' && __webpack_public_path__ ? __webpack_public_path__ : '/';
 const publicPath = rawPublic.endsWith('/') ? rawPublic : `${rawPublic}/`;
 
+// Load PrimeIcons fonts from the Auth microfrontend's runtime public path
+const primeIconsFontStyle = document.createElement('style');
+
+primeIconsFontStyle.setAttribute('data-auth-primeicons-font', 'true');
+
+primeIconsFontStyle.textContent = `
+  @font-face {
+    font-family: 'primeicons';
+    font-style: normal;
+    font-weight: normal;
+    font-display: block;
+    src:
+      url('${publicPath}primeicons.woff2') format('woff2'),
+      url('${publicPath}primeicons.woff') format('woff'),
+      url('${publicPath}primeicons.ttf') format('truetype');
+  }
+`;
+
+document.head.appendChild(primeIconsFontStyle);
+
 const lifecycles = singleSpaAngular({
   bootstrapFunction: singleSpaProps => {
     singleSpaPropsSubject.next(singleSpaProps);
